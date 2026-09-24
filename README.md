@@ -58,7 +58,7 @@ public/_headers         Cloudflare security & cache headers
 Project: **`sayemans`**. Its web config lives in `.env.production`, which is committed because Firebase web config is public by design; access is controlled by `firestore.rules`. `npm run dev` keeps using the local test adapter; to use real Firebase in dev, copy `.env.production` to `.env.local`.
 
 1. Firebase console → **Firestore Database → Create database** (location `eur3` or `europe-west4`, production mode).
-2. **Authentication → Get started → Email/Password → Enable**, and add `sayemtaher.org` under Settings → Authorized domains.
+2. **Authentication → Get started → Email/Password → Enable**, and add `sayemans.org` under Settings → Authorized domains.
 3. Deploy the security rules: `npx -y firebase-tools login`, then `npm run deploy:rules`.
 4. Leads and newsletter sign-ups are both emailed and saved; the visitor sees success if either works.
 5. Create your user in Authentication, then in Firestore create the document `admins/<your-uid>` (any content).
@@ -72,7 +72,7 @@ Hosted as a Cloudflare Worker serving `dist/` (config: `wrangler.toml`). Workers
 
 - Build command: `npm run build`
 - Deploy command: `npx wrangler deploy`
-- Build variables: `NODE_VERSION=22`, `VITE_SITE_URL=https://sayemtaher.org`, and all `VITE_FIREBASE_*` values
+- Build variables: `NODE_VERSION=22`, `VITE_SITE_URL=https://sayemans.org`, and all `VITE_FIREBASE_*` values
 - The `name` in `wrangler.toml` must equal the Worker name in the dashboard.
 
 From the CLI: `npm run deploy` (requires `wrangler login`).
@@ -84,7 +84,7 @@ From the CLI: `npm run deploy` (requires `wrangler login`).
 1. Create a free Resend account **with sayemans.org@gmail.com**. Until you verify a domain, Resend only delivers to the account owner's address.
 2. Resend → API Keys → create a key with *Sending access*.
 3. Cloudflare → Worker → Settings → Variables and Secrets → add a **Secret** named `RESEND_API_KEY`, then redeploy.
-4. Optional: in Resend → Domains, add `sayemtaher.org` and its DNS records in Cloudflare. Then set `MAIL_FROM` to `SAYEMANS <hello@sayemtaher.org>` and `CONFIRMATION_EMAILS = "true"` in `wrangler.toml` so visitors get an automatic confirmation.
+4. Optional: in Resend → Domains, add `sayemans.org` and its DNS records in Cloudflare. Then set `MAIL_FROM` to `SAYEMANS <hello@sayemans.org>` and `CONFIRMATION_EMAILS = "true"` in `wrangler.toml` so visitors get an automatic confirmation.
 
 Local test: `npm run build && npx wrangler dev`, with the key in `.dev.vars` (git-ignored).
 

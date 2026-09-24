@@ -21,8 +21,8 @@ CONTACT_TO = "sayemans.org@gmail.com"
 # Sender. Until a domain is verified in Resend, only onboarding@resend.dev works,
 # and it can only deliver to the email address of the Resend account owner.
 MAIL_FROM = "SAYEMANS Website <onboarding@resend.dev>"
-# Set to "true" after verifying sayemtaher.org in Resend (and changing MAIL_FROM
-# to e.g. "SAYEMANS <hello@sayemtaher.org>") to auto-reply to visitors.
+# Set to "true" after verifying sayemans.org in Resend (and changing MAIL_FROM
+# to e.g. "SAYEMANS <hello@sayemans.org>") to auto-reply to visitors.
 CONFIRMATION_EMAILS = "false"
 
 [observability]

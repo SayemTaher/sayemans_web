@@ -49,7 +49,7 @@ const og = `
   <text x="108" y="410" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#grad)">built with passion.</text>
 
   <text x="110" y="500" font-family="${font}" font-size="26" fill="#a1a1a6">UI/UX · Web · Mobile apps · SaaS · Design systems</text>
-  <text x="1090" y="500" text-anchor="end" font-family="${font}" font-size="24" font-weight="500" fill="#f5f5f7">Eindhoven, NL · sayemtaher.org</text>
+  <text x="1090" y="500" text-anchor="end" font-family="${font}" font-size="24" font-weight="500" fill="#f5f5f7">Eindhoven, NL · sayemans.org</text>
 </svg>`;
 
 render(og, 1200, 'og-image.png');

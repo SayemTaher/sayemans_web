@@ -29,7 +29,7 @@ export const company = {
   },
   foundingDate: '2022-02-14',
   foundingYear: 2022,
-  siteUrl: import.meta.env.VITE_SITE_URL || 'https://sayemtaher.org',
+  siteUrl: import.meta.env.VITE_SITE_URL || 'https://sayemans.org',
   socials: {
     linkedin: null, // e.g. 'https://www.linkedin.com/company/sayemans'
     instagram: null,

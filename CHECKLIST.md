@@ -26,7 +26,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 | 2 | BTW-id (VAT number, format NL…B..; **not** the omzetbelastingnummer) | `src/config/company.js` → `vat` |
 | 3 | ~~Legal name~~ ✅ SAYEMANS, Eenmanszaak, SBI 62100 | done |
 | 4 | Business address: ✅ Brunelleschiweg, 5624 CJ Eindhoven. **House number still missing** | `company.address.street` |
-| 5 | ~~Domain~~ ✅ sayemtaher.org | done |
+| 5 | ~~Domain~~ ✅ sayemans.org | done |
 | 6 | Confirm prices (projects, subscriptions, hourly €95) | `src/data/pricing.js` |
 | 7 | ~~Founding date~~ ✅ 14 Feb 2022 | done |
 | 8 | Social links (LinkedIn, Instagram, GitHub) | `company.socials` |
@@ -103,12 +103,12 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 - [ ] 🔴 Authentication: Console → Build → Authentication → Get started → enable Email/Password
 - [ ] 🔴 Deploy rules: `npx -y firebase-tools login` → `npm run deploy:rules`
 - [ ] 🔴 Create your admin user in Auth → Firestore doc `admins/{your-uid}`
-- [ ] Auth → Settings → Authorized domains → add `sayemtaher.org`
+- [ ] Auth → Settings → Authorized domains → add `sayemans.org`
 - [x] Push code to GitHub (`SayemTaher/sayemans_web`, branch `main`)
 - [x] Cloudflare Worker (static assets) connected to Git; `wrangler.toml` switched from Pages to Workers `[assets]` config
 - [ ] Confirm first successful deploy (Worker name must match `name` in `wrangler.toml`)
   - Build `npm run build`, deploy `npx wrangler deploy`, env `NODE_VERSION=22` + all `VITE_*` vars
-- [ ] Connect custom domain `sayemtaher.org` + `www.sayemtaher.org` redirect
+- [ ] Connect custom domain `sayemans.org` + `www.sayemans.org` redirect
 - [ ] Add the domain to Firebase Auth → Authorized domains
 - [x] `public/og-image.png` (1200×630) for social sharing (`npm run images`)
 - [x] Apple touch icon + 192/512 PWA icons
@@ -123,7 +123,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 - [ ] Cloudflare Turnstile on the contact form, verified in a Pages Function (`functions/api/lead.js`)
 - [x] Email on new lead + newsletter sign-up: Worker `/api/contact` & `/api/subscribe` → Resend → sayemans.org@gmail.com (code done, tested locally)
 - [ ] 🔴 Add `RESEND_API_KEY` secret in Cloudflare (Resend account must be registered with sayemans.org@gmail.com until a domain is verified)
-- [ ] Verify `sayemtaher.org` in Resend → set `MAIL_FROM` to `hello@sayemtaher.org` and `CONFIRMATION_EMAILS="true"` (auto-reply to visitors)
+- [ ] Verify `sayemans.org` in Resend → set `MAIL_FROM` to `hello@sayemans.org` and `CONFIRMATION_EMAILS="true"` (auto-reply to visitors)
 - [ ] Firebase App Check enforcement
 - [ ] Data retention job: delete `events` older than 14 months (scheduled Cloud Function / Cloudflare Cron Worker)
 - [ ] Dutch translation (`/nl/*`) with `hreflang` (i18n-ready structure: move copy into `src/locales`)
@@ -161,6 +161,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-25 | Live domain is **sayemans.org** (sayemtaher.org does not exist, NXDOMAIN): all URLs, sitemap, OG, CORS origins switched. Found live site stuck on commit b80ce56 → Worker deploys (1a364c6, faab0db) not live yet. Firestore DB + Auth now exist; security rules still Firebase defaults (deny all). |
 | 2026-09-25 | Firebase project `sayemans` wired into production builds. Leads/subscribers now saved via email OR Firestore (either succeeding counts), with an 8s Firestore timeout. Firestore + Auth still need enabling in the console. |
 | 2026-09-25 | Contact form now emails inquiries via Cloudflare Worker + Resend (to sayemans.org@gmail.com); business email changed to sayemans.org@gmail.com; logo simplified to plain text name; URLs served without trailing slash. |
 | 2026-09-24 | Copy pass: removed overused buzzwords (craft, ambitious, effortless, momentum, next generation, etc.); new tagline "Digital products, built with passion." |
@@ -169,6 +170,6 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 | 2026-09-24 | TaalMeester phone now shows the real app screenshot (assets-src/taalmeester_home.png → 33/54 KB WebP via `npm run images`). |
 | 2026-09-24 | Light-mode link blue #0066cc (contrast), stronger mockup text; pushed to trigger Cloudflare redeploy. |
 | 2026-09-24 | Switched hosting config to Cloudflare Workers static assets (fixes `wrangler deploy` error). Added OG image, app icons, CI, CSS-first hero entrance (Speed Index 5.9s → 2.8s), contrast fixes. |
-| 2026-09-24 | Domain set to sayemtaher.org; git repo initialised and pushed to GitHub `main`. |
+| 2026-09-24 | Domain set to sayemans.org; git repo initialised and pushed to GitHub `main`. |
 | 2026-09-24 | Added KvK registry data (KvK, legal form, SBI, Eindhoven address, founding date) to config, About, footer, legal pages, JSON-LD; Eindhoven local-SEO copy. |
 | 2026-09-24 | Phase 1 complete: architecture, Liquid Glass design system, 17 routes / 26 prerendered pages, SEO, Firebase-ready backend with admin dashboard, Cloudflare config. Verified in browser (desktop, mobile, light, dark, hydration). |

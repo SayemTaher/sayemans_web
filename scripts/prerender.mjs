@@ -13,7 +13,7 @@ const entry = fs.readdirSync(ssrDir).find((f) => /^entry-server\.(m?js)$/.test(f
 const { render, prerenderPaths, sitemapEntries } = await import(pathToFileURL(path.join(ssrDir, entry)).href);
 
 const template = fs.readFileSync(path.join(dist, 'index.html'), 'utf8');
-const siteUrl = (process.env.VITE_SITE_URL || 'https://sayemtaher.org').replace(/\/$/, '');
+const siteUrl = (process.env.VITE_SITE_URL || 'https://sayemans.org').replace(/\/$/, '');
 
 const write = (file, html) => {
   fs.mkdirSync(path.dirname(file), { recursive: true });

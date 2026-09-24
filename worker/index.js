@@ -9,8 +9,8 @@
 // ─────────────────────────────────────────────────────────────
 
 const ALLOWED_ORIGINS = [
-  'https://sayemtaher.org',
-  'https://www.sayemtaher.org',
+  'https://sayemans.org',
+  'https://www.sayemans.org',
   'http://localhost:5173',
   'http://localhost:4173',
   'http://localhost:8787',
@@ -78,7 +78,7 @@ function inquiryEmail(d, meta) {
       </table>
       <div style="margin-top:20px;padding:16px;background:#f5f5f7;border-radius:12px;font-size:15px;line-height:1.6;color:#1d1d1f;white-space:pre-wrap">${esc(d.message)}</div>
     </div>
-    <p style="margin:16px 0 0;font-size:12px;color:#86868b">Sent from sayemtaher.org · ${esc(meta.when)} · ${esc(meta.country)}${meta.landing ? ` · landed on ${esc(meta.landing)}` : ''}${meta.referrer ? ` · via ${esc(meta.referrer)}` : ''}</p>
+    <p style="margin:16px 0 0;font-size:12px;color:#86868b">Sent from sayemans.org · ${esc(meta.when)} · ${esc(meta.country)}${meta.landing ? ` · landed on ${esc(meta.landing)}` : ''}${meta.referrer ? ` · via ${esc(meta.referrer)}` : ''}</p>
   </div></body></html>`;
 }
 
