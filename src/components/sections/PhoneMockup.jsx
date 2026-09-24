@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 /** TaalMeester home screen, recreated in HTML/CSS (illustrative). */
 export default function PhoneMockup({ className = '', style }) {
   return (
-    <motion.div style={style} className={`relative mx-auto w-[280px] sm:w-[300px] ${className}`}>
+    <motion.div style={style} aria-hidden="true" className={`relative mx-auto w-[280px] sm:w-[300px] ${className}`}>
       <div className="relative rounded-[52px] bg-[linear-gradient(145deg,#3a3a3c,#1c1c1e)] p-[10px] shadow-[0_50px_100px_-30px_rgb(0_0_0/0.6),inset_0_0_0_1.5px_rgb(255_255_255/0.12)]">
         <div className="relative overflow-hidden rounded-[42px] bg-[#fff8f3] text-[#1b2433] dark:bg-[#0f1520] dark:text-[#f3f5f8]">
           {/* Dynamic Island */}

@@ -1,4 +1,12 @@
-# Cloudflare Pages project — `npm run deploy:pages`
-name = "sayemans"
-pages_build_output_dir = "./dist"
+# Cloudflare Workers (static assets) — deployed by Workers Builds on every push
+# to `main` (deploy command: `npx wrangler deploy`).
+# `name` must match the Worker's name in the Cloudflare dashboard.
+name = "sayemans-web"
 compatibility_date = "2026-09-01"
+
+[assets]
+directory = "./dist"
+# /pricing → dist/pricing/index.html (prerendered pages)
+html_handling = "auto-trailing-slash"
+# Unknown URLs → dist/404.html with a 404 status (good for SEO)
+not_found_handling = "404-page"

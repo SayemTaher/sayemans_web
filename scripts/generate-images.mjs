@@ -1,0 +1,62 @@
+// Generates raster brand assets from SVG: Open Graph image + app icons.
+// Run manually after brand changes: `npm run images` (outputs are committed).
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { Resvg } from '@resvg/resvg-js';
+
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const pub = (f) => path.join(root, 'public', f);
+
+const render = (svg, width, out) => {
+  const png = new Resvg(svg, {
+    fitTo: { mode: 'width', value: width },
+    font: { loadSystemFonts: true, defaultFontFamily: 'Helvetica Neue' },
+  })
+    .render()
+    .asPng();
+  fs.writeFileSync(pub(out), png);
+  console.log(`✓ public/${out} (${(png.length / 1024).toFixed(0)} KB)`);
+};
+
+const font = `'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif`;
+
+// ── Open Graph / social share image (1200×630) ──
+const og = `
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="a1" cx="0.18" cy="0.1" r="0.6"><stop offset="0" stop-color="#0a84ff" stop-opacity=".55"/><stop offset="1" stop-color="#0a84ff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="a2" cx="0.95" cy="0.35" r="0.55"><stop offset="0" stop-color="#bf5af2" stop-opacity=".45"/><stop offset="1" stop-color="#bf5af2" stop-opacity="0"/></radialGradient>
+    <radialGradient id="a3" cx="0.55" cy="1.1" r="0.6"><stop offset="0" stop-color="#ff375f" stop-opacity=".35"/><stop offset="1" stop-color="#ff375f" stop-opacity="0"/></radialGradient>
+    <linearGradient id="grad" x1="0" x2="1"><stop offset="0" stop-color="#0a84ff"/><stop offset=".4" stop-color="#5e5ce6"/><stop offset=".7" stop-color="#bf5af2"/><stop offset="1" stop-color="#ff375f"/></linearGradient>
+    <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset=".3" stop-color="#f5f5f7"/><stop offset="1" stop-color="#8e8e93"/></linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity=".03"/></linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".4" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity=".25"/></linearGradient>
+    <linearGradient id="logo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a84ff"/><stop offset=".55" stop-color="#5e5ce6"/><stop offset="1" stop-color="#ff375f"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#000"/>
+  <rect width="1200" height="630" fill="url(#a1)"/>
+  <rect width="1200" height="630" fill="url(#a2)"/>
+  <rect width="1200" height="630" fill="url(#a3)"/>
+
+  <rect x="60" y="60" width="1080" height="510" rx="44" fill="url(#glass)" stroke="url(#rim)" stroke-width="1.5"/>
+
+  <rect x="110" y="112" width="56" height="56" rx="16" fill="url(#logo)"/>
+  <text x="138" y="152" text-anchor="middle" font-family="${font}" font-size="30" font-weight="700" fill="#fff">S</text>
+  <text x="186" y="150" font-family="${font}" font-size="26" font-weight="600" letter-spacing="5" fill="#f5f5f7">SAYEMANS</text>
+
+  <text x="108" y="318" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#chrome)">Digital products,</text>
+  <text x="108" y="410" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#grad)">engineered with craft.</text>
+
+  <text x="110" y="500" font-family="${font}" font-size="26" fill="#a1a1a6">UI/UX · Web · Mobile apps · SaaS · Design systems</text>
+  <text x="1090" y="500" text-anchor="end" font-family="${font}" font-size="24" font-weight="500" fill="#f5f5f7">Eindhoven, NL · sayemtaher.org</text>
+</svg>`;
+
+render(og, 1200, 'og-image.png');
+
+// ── App icons from the favicon (solid background for iOS home screen) ──
+const favicon = fs.readFileSync(pub('favicon.svg'), 'utf8');
+const squareIcon = favicon.replace(/rx="15"/g, 'rx="0"'); // iOS applies its own mask
+render(squareIcon, 180, 'apple-touch-icon.png');
+render(favicon, 192, 'icon-192.png');
+render(favicon, 512, 'icon-512.png');

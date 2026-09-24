@@ -35,6 +35,8 @@ src/
   entry-server.jsx  SSR render used by scripts/prerender.mjs
 scripts/prerender.mjs   writes dist/<route>/index.html, 404.html, sitemap.xml
 firestore.rules         security rules (public create-only, admin read)
+wrangler.toml           Cloudflare Worker static-assets config
+scripts/generate-images.mjs  OG image + app icons (`npm run images`)
 public/_headers         Cloudflare security & cache headers
 ```
 
@@ -60,12 +62,16 @@ public/_headers         Cloudflare security & cache headers
 
 **Collections:** `leads` (contact form), `subscribers` (newsletter), `events` (consented analytics), `admins` (allowlist).
 
-## Deploy (Cloudflare Pages)
+## Deploy (Cloudflare Workers, static assets)
 
-In the dashboard: connect the Git repo, build command `npm run build`, output directory `dist`.
-Environment variables: `NODE_VERSION=22`, `VITE_SITE_URL`, and all `VITE_FIREBASE_*` values.
+Hosted as a Cloudflare Worker serving `dist/` (config: `wrangler.toml`). Workers Builds deploys every push to `main`:
 
-Or from the CLI: `npm run deploy:pages` (requires `wrangler login`).
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy`
+- Build variables: `NODE_VERSION=22`, `VITE_SITE_URL=https://sayemtaher.org`, and all `VITE_FIREBASE_*` values
+- The `name` in `wrangler.toml` must equal the Worker name in the dashboard.
+
+From the CLI: `npm run deploy` (requires `wrangler login`).
 
 ## State management & Redux migration
 

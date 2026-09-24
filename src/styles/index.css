@@ -61,13 +61,18 @@
   }
 }
 
+@keyframes enter {
+  from { opacity: 0; transform: translateY(0.45em); filter: blur(12px); }
+  to { opacity: 1; transform: none; filter: none; }
+}
+
 /* ─────────────────────────── Themes ─────────────────────────── */
 :root {
   --bg: #f5f5f7;
   --bg-elevated: #ffffff;
   --fg: #1d1d1f;
   --fg-muted: #515154;
-  --fg-subtle: #86868b;
+  --fg-subtle: #6e6e73; /* 4.6:1 on #f5f5f7 */
   --line: rgb(0 0 0 / 0.08);
 
   --glass-bg: linear-gradient(135deg, rgb(255 255 255 / 0.72), rgb(255 255 255 / 0.42));
@@ -85,7 +90,7 @@
   --bg-elevated: #0d0d0f;
   --fg: #f5f5f7;
   --fg-muted: #a1a1a6;
-  --fg-subtle: #6e6e73;
+  --fg-subtle: #8e8e93; /* 6.4:1 on #000 */
   --line: rgb(255 255 255 / 0.1);
 
   --glass-bg: linear-gradient(135deg, rgb(255 255 255 / 0.1), rgb(255 255 255 / 0.03));
@@ -214,6 +219,12 @@
 
   .eyebrow {
     @apply text-xs font-semibold uppercase tracking-[0.18em] text-fg-subtle;
+  }
+
+  /* Above-the-fold entrance: pure CSS so it plays as soon as HTML paints (good LCP). */
+  .enter {
+    animation: enter 1s var(--ease-out-expo) both;
+    animation-delay: var(--d, 0s);
   }
 
   .container-x {

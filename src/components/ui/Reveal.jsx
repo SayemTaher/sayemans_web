@@ -31,6 +31,25 @@ export function RevealText({ text, as = 'h2', className = '', delay = 0, stagger
   const gradient = className.split(' ').filter((c) => /^text-(gradient|chrome)/.test(c)).join(' ');
   const outer = className.split(' ').filter((c) => !/^text-(gradient|chrome)/.test(c)).join(' ');
   const n = words.length;
+  // On-mount headlines (above the fold) use the CSS .enter animation: it runs
+  // from the prerendered HTML without waiting for JS, so first paint is fast.
+  if (animateOnMount) {
+    const Plain = as;
+    return (
+      <Plain className={outer}>
+        {words.map((w, i) => (
+          <span
+            key={i}
+            className={`enter inline-block ${gradient ? `${gradient} -mb-[0.14em] pb-[0.14em]` : ''}`}
+            style={{ '--d': `${delay + i * stagger}s`, ...(gradient ? { backgroundSize: `${n * 100}% 100%`, backgroundPosition: `${n > 1 ? (i / (n - 1)) * 100 : 0}% 0` } : {}) }}
+          >
+            {w}
+            {i < n - 1 && '\u00A0'}
+          </span>
+        ))}
+      </Plain>
+    );
+  }
   const trigger = animateOnMount ? { animate: 'show' } : { whileInView: 'show', viewport: { once: true, margin: '0px 0px -10% 0px' } };
   return (
     <Tag className={outer} initial="hidden" {...trigger} transition={{ staggerChildren: stagger, delayChildren: delay }}>

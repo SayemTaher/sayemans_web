@@ -12,7 +12,7 @@ const ease = [0.16, 1, 0.3, 1];
 function DashboardMock() {
   const bars = [38, 52, 44, 68, 57, 76, 64, 88, 72, 94, 83, 100];
   return (
-    <div className="grid h-full grid-cols-[180px_1fr] gap-0 text-left max-md:grid-cols-1">
+    <div aria-hidden="true" className="grid h-full grid-cols-[180px_1fr] gap-0 text-left max-md:grid-cols-1">
       <aside className="hidden flex-col gap-1 border-r border-line p-4 md:flex">
         <div className="mb-4 flex items-center gap-2">
           <span className="size-6 rounded-lg bg-[linear-gradient(135deg,var(--color-blue),var(--color-purple))]" />
@@ -77,42 +77,31 @@ export default function Hero() {
       <div className="absolute inset-x-0 bottom-0 -z-0 h-64 bg-gradient-to-b from-transparent to-bg" />
 
       <motion.div style={{ opacity: copyOpacity, y: copyY }} className="container-x relative z-10 flex flex-col items-center text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 16, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.9, ease }}
-        >
+        <div className="enter">
           <Glass className="inline-flex items-center gap-2 rounded-full py-1.5 pr-4 pl-1.5 text-[13px] font-medium">
             <span className="rounded-full bg-[linear-gradient(135deg,var(--color-blue),var(--color-purple))] px-2.5 py-0.5 text-[11px] font-semibold text-white">New</span>
             Now booking Q4 product sprints
             <Icon name="ArrowRight" size={14} />
           </Glass>
-        </motion.div>
+        </div>
 
         <h1 className="mt-8 max-w-5xl text-display font-semibold">
           <RevealText as="span" animateOnMount delay={0.15} text="Digital products," className="block text-chrome" />
           <RevealText as="span" animateOnMount delay={0.35} text="engineered with craft." className="block text-gradient pb-2" />
         </h1>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20, filter: 'blur(8px)' }}
-          animate={{ opacity: 1, y: 0, filter: 'blur(0px)', transitionEnd: { filter: 'none' } }}
-          transition={{ duration: 1, delay: 0.7, ease }}
-          className="mt-7 max-w-2xl text-lg leading-relaxed text-fg-muted sm:text-xl"
+        <p
+          style={{ '--d': '0.6s' }}
+          className="enter mt-7 max-w-2xl text-lg leading-relaxed text-fg-muted sm:text-xl"
         >
           SAYEMANS is a digital product studio from Eindhoven, the Netherlands. We design and build websites, SaaS platforms and apps
           for B2B companies and ambitious startups, from first sketch to scale.
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.85, ease }}
-          className="mt-10 flex flex-col gap-3 sm:flex-row"
-        >
+        <div style={{ '--d': '0.75s' }} className="enter mt-10 flex flex-col gap-3 sm:flex-row">
           <Button to="/contact" size="lg" variant="accent">Start a project</Button>
           <Button to="/services" size="lg" variant="glass" iconRight="ArrowUpRight">Explore services</Button>
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* 3D product stage */}

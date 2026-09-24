@@ -104,15 +104,18 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 - [ ] `npm i -g firebase-tools` → `firebase login` → `npm run deploy:rules`
 - [ ] Create your admin user in Firebase Auth → add doc `admins/{uid}` in Firestore
 - [x] Push code to GitHub (`SayemTaher/sayemans_web`, branch `main`)
-- [ ] Create Cloudflare Pages project `sayemans` → Connect to Git → `SayemTaher/sayemans_web`
-  - Build command `npm run build`, output `dist`, env `NODE_VERSION=22` + all `VITE_*` vars
+- [x] Cloudflare Worker (static assets) connected to Git; `wrangler.toml` switched from Pages to Workers `[assets]` config
+- [ ] Confirm first successful deploy (Worker name must match `name` in `wrangler.toml`)
+  - Build `npm run build`, deploy `npx wrangler deploy`, env `NODE_VERSION=22` + all `VITE_*` vars
 - [ ] Connect custom domain `sayemtaher.org` + `www.sayemtaher.org` redirect
 - [ ] Add the domain to Firebase Auth → Authorized domains
-- [ ] Create `public/og-image.png` (1200×630) for social sharing
-- [ ] Apple touch icon (`apple-touch-icon.png` 180×180)
+- [x] `public/og-image.png` (1200×630) for social sharing (`npm run images`)
+- [x] Apple touch icon + 192/512 PWA icons
 - [ ] Google Search Console + Bing Webmaster: verify and submit the sitemap
 - [ ] Test: form submit → lead appears in `/admin`; analytics after consent
-- [ ] Lighthouse pass (target ≥ 95 in all four categories)
+- [x] GitHub Actions CI (lint → build → verify prerender)
+- [~] Lighthouse (local, mobile sim): Perf 90–94, A11y 96–100, Best Practices 100, SEO 100. Remaining: homepage scroll-statement dim words and light-mode blue link contrast; CSS inlining for FCP
+- [ ] Re-run Lighthouse on the live domain
 
 ## Phase 3: Hardening & growth 🟡
 
@@ -156,6 +159,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-24 | Switched hosting config to Cloudflare Workers static assets (fixes `wrangler deploy` error). Added OG image, app icons, CI, CSS-first hero entrance (Speed Index 5.9s → 2.8s), contrast fixes. |
 | 2026-09-24 | Domain set to sayemtaher.org; git repo initialised and pushed to GitHub `main`. |
 | 2026-09-24 | Added KvK registry data (KvK, legal form, SBI, Eindhoven address, founding date) to config, About, footer, legal pages, JSON-LD; Eindhoven local-SEO copy. |
 | 2026-09-24 | Phase 1 complete: architecture, Liquid Glass design system, 17 routes / 26 prerendered pages, SEO, Firebase-ready backend with admin dashboard, Cloudflare config. Verified in browser (desktop, mobile, light, dark, hydration). |

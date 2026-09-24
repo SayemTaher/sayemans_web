@@ -4,6 +4,7 @@ import { insights, getInsight } from '@/data/insights';
 import { generalFaqs } from '@/data/content';
 import { pricingFaqs } from '@/data/pricing';
 import { taalmeester } from '@/data/products';
+import { company } from '@/config/company';
 import { breadcrumbLd, faqLd, organizationLd, taalmeesterLd, websiteLd } from '@/config/seo';
 
 // ─────────────────────────────────────────────────────────────
@@ -72,7 +73,7 @@ export const routes = [
             '@type': 'Service',
             name: s.title,
             description: s.description,
-            provider: { '@id': 'https://sayemtaher.org/#organization' },
+            provider: { '@id': `${company.siteUrl}/#organization` },
             areaServed: ['NL', 'EU'],
           },
           breadcrumbLd([{ name: 'Services', path: '/services' }, { name: s.title, path: `/services/${s.slug}` }]),
@@ -168,7 +169,7 @@ export const routes = [
             description: a.excerpt,
             datePublished: a.date,
             author: { '@type': 'Organization', name: 'SAYEMANS' },
-            publisher: { '@id': 'https://sayemtaher.org/#organization' },
+            publisher: { '@id': `${company.siteUrl}/#organization` },
           },
         ],
       };
