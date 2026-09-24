@@ -2,6 +2,7 @@
 
 Website for SAYEMANS (digital product studio, NL). React 19 + Vite 8 + Tailwind 4 + React Router 8 + Motion; prerendered (SSG) for SEO; Cloudflare Workers static-assets hosting (`wrangler.toml` `[assets]`, auto-deployed from GitHub `main`); Firebase backend.
 
+- **Deploy workflow (owner requirement):** after every finished change run `npm run lint` + `npm run build`, then commit and push to GitHub `main` (SayemTaher/sayemans_web). Cloudflare Workers Builds deploys `main` automatically; never push a failing build.
 - **Progress tracker:** `CHECKLIST.md`. Read it first; update "Where we left off" and the session log at the end of every session.
 - Commands: `npm run dev`, `npm run build` (client + SSR prerender), `npm run preview`, `npm run lint`.
 - Routing, SEO metadata, prerender list and sitemap all come from `src/routes/routes.jsx`. New pages need one entry there.
