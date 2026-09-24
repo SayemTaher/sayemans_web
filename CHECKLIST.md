@@ -98,11 +98,12 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 ## Phase 2: Go live ⏳ (next)
 
 - [ ] 🔴 Fill owner inputs above
-- [ ] Create Firebase project (region **europe-west** for EU data residency) and add a Web App
-- [ ] Copy `.env.example` → `.env` and fill the Firebase keys
-- [ ] Enable Firestore, Authentication (Email/Password), Analytics
-- [ ] `npm i -g firebase-tools` → `firebase login` → `npm run deploy:rules`
-- [ ] Create your admin user in Firebase Auth → add doc `admins/{uid}` in Firestore
+- [x] Firebase project `sayemans` created + Web App registered; config committed in `.env.production` (public by design) and `.firebaserc`
+- [ ] 🔴 Firestore: Console → Build → Firestore Database → Create database (location **eur3** or europe-west4, production mode)
+- [ ] 🔴 Authentication: Console → Build → Authentication → Get started → enable Email/Password
+- [ ] 🔴 Deploy rules: `npx -y firebase-tools login` → `npm run deploy:rules`
+- [ ] 🔴 Create your admin user in Auth → Firestore doc `admins/{your-uid}`
+- [ ] Auth → Settings → Authorized domains → add `sayemtaher.org`
 - [x] Push code to GitHub (`SayemTaher/sayemans_web`, branch `main`)
 - [x] Cloudflare Worker (static assets) connected to Git; `wrangler.toml` switched from Pages to Workers `[assets]` config
 - [ ] Confirm first successful deploy (Worker name must match `name` in `wrangler.toml`)
@@ -160,6 +161,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-25 | Firebase project `sayemans` wired into production builds. Leads/subscribers now saved via email OR Firestore (either succeeding counts), with an 8s Firestore timeout. Firestore + Auth still need enabling in the console. |
 | 2026-09-25 | Contact form now emails inquiries via Cloudflare Worker + Resend (to sayemans.org@gmail.com); business email changed to sayemans.org@gmail.com; logo simplified to plain text name; URLs served without trailing slash. |
 | 2026-09-24 | Copy pass: removed overused buzzwords (craft, ambitious, effortless, momentum, next generation, etc.); new tagline "Digital products, built with passion." |
 | 2026-09-24 | Logo is now a custom-drawn SAYEMANS wordmark (no initial tile); favicon/app icons use the wordmark S. Hero dashboard replaced by a content-rich "Project Hub" (phases, sprint, activity, staging + Lighthouse/CWV, demo, budget). |

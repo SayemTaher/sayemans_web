@@ -22,23 +22,40 @@ async function postApi(path, payload) {
   return data;
 }
 
-/** Best-effort copy to Firestore (admin dashboard). Never blocks the user. */
-async function storeCopy(collection, data) {
-  try {
-    if (!isFirebaseConfigured) {
-      localDb.add(collection, data);
-      return;
-    }
-    const { db, fs } = await getDb();
-    await fs.addDoc(fs.collection(db, collection), { ...data, createdAt: fs.serverTimestamp() });
-  } catch (err) {
-    if (import.meta.env.DEV) console.warn(`[${collection}] store failed`, err);
+/** Reject if a promise takes too long (Firestore retries forever when offline). */
+const withTimeout = (promise, ms = 8000) =>
+  Promise.race([promise, new Promise((_, reject) => setTimeout(() => reject(new Error('Timed out')), ms))]);
+
+/** Save a copy to Firestore (admin dashboard), or the local adapter in dev. */
+async function store(collection, data, docId) {
+  if (!isFirebaseConfigured) {
+    localDb.add(collection, data);
+    return;
   }
+  const { db, fs } = await getDb();
+  const payload = { ...data, createdAt: fs.serverTimestamp() };
+  await withTimeout(docId ? fs.setDoc(fs.doc(db, collection, docId), payload) : fs.addDoc(fs.collection(db, collection), payload));
+}
+
+/** Run email + storage in parallel; succeed if either one worked. */
+async function deliver(label, mailPromise, storePromise) {
+  const [mail, saved] = await Promise.allSettled([mailPromise, storePromise]);
+  if (import.meta.env.DEV) {
+    if (mail.status === 'rejected') console.warn(`[${label}] email failed`, mail.reason);
+    if (saved.status === 'rejected') console.warn(`[${label}] store failed`, saved.reason);
+  }
+  if (mail.status === 'fulfilled' || saved.status === 'fulfilled') {
+    return { ok: true, emailed: mail.status === 'fulfilled', stored: saved.status === 'fulfilled' };
+  }
+  throw mail.reason;
 }
 
 /**
- * Submit a project inquiry: emailed to the studio via /api/contact
- * (Resend), plus a copy in Firestore `leads` when Firebase is configured.
+ * Submit a project inquiry. Two independent channels run in parallel:
+ *   1. email via the Worker (/api/contact → Resend → studio inbox)
+ *   2. a copy in Firestore `leads` (admin dashboard)
+ * The visitor sees success if either channel worked, so a lead is never
+ * lost when one of them is down or not configured yet.
  */
 export async function submitLead(input) {
   const lead = {
@@ -56,22 +73,10 @@ export async function submitLead(input) {
     meta: getAttribution(),
   };
 
-  const result = await postApi('/api/contact', { ...lead, hp: input.hp || '' });
-  storeCopy('leads', lead);
-  return result;
+  return deliver('lead', postApi('/api/contact', { ...lead, hp: input.hp || '' }), store('leads', lead));
 }
 
 export async function subscribe(email, source = 'footer') {
   const clean = email.trim().toLowerCase();
-  await postApi('/api/subscribe', { email: clean, source });
-  if (isFirebaseConfigured) {
-    try {
-      const { db, fs } = await getDb();
-      await fs.setDoc(fs.doc(db, 'subscribers', clean), { email: clean, source, createdAt: fs.serverTimestamp() });
-    } catch {
-      /* optional */
-    }
-  } else {
-    localDb.add('subscribers', { email: clean, source });
-  }
+  return deliver('subscribe', postApi('/api/subscribe', { email: clean, source }), store('subscribers', { email: clean, source }, clean));
 }

@@ -55,10 +55,12 @@ public/_headers         Cloudflare security & cache headers
 
 ## Backend setup (Firebase)
 
-1. Create a Firebase project (choose an EU location, e.g. `europe-west4`) and add a **Web app**.
-2. `cp .env.example .env` and paste the config values.
-3. Enable **Firestore**, **Authentication → Email/Password**, and (optionally) **Analytics**.
-4. Deploy rules: `npm i -g firebase-tools && firebase login && firebase use --add && npm run deploy:rules`
+Project: **`sayemans`**. Its web config lives in `.env.production`, which is committed because Firebase web config is public by design; access is controlled by `firestore.rules`. `npm run dev` keeps using the local test adapter; to use real Firebase in dev, copy `.env.production` to `.env.local`.
+
+1. Firebase console → **Firestore Database → Create database** (location `eur3` or `europe-west4`, production mode).
+2. **Authentication → Get started → Email/Password → Enable**, and add `sayemtaher.org` under Settings → Authorized domains.
+3. Deploy the security rules: `npx -y firebase-tools login`, then `npm run deploy:rules`.
+4. Leads and newsletter sign-ups are both emailed and saved; the visitor sees success if either works.
 5. Create your user in Authentication, then in Firestore create the document `admins/<your-uid>` (any content).
 6. Visit `/admin`.
 
