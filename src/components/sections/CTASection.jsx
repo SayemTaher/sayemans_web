@@ -4,7 +4,7 @@ import Button from '../ui/Button';
 import Glass from '../ui/Glass';
 import { Reveal, RevealText } from '../ui/Reveal';
 
-export default function CTASection({ title = 'Let’s build what’s next.', text }) {
+export default function CTASection({ title = 'Have an idea? Let’s talk.', text }) {
   return (
     <section className="container-x py-16">
       <Reveal>

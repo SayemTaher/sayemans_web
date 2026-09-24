@@ -15,7 +15,7 @@ export default function ProcessSticky({ cta = true }) {
     <section ref={ref} className="container-x grid gap-12 py-24 sm:py-32 lg:grid-cols-[1fr_1.2fr] lg:gap-20">
       <div className="lg:sticky lg:top-32 lg:self-start">
         <Reveal as="p" className="eyebrow">How we work</Reveal>
-        <RevealText text="A process built for momentum." className="mt-5 text-headline font-semibold text-chrome" />
+        <RevealText text="A process you can follow." className="mt-5 text-headline font-semibold text-chrome" />
         <Reveal as="p" delay={0.15} className="mt-6 max-w-md text-lg leading-relaxed text-fg-muted">
           Six clear phases, weekly demos and one shared roadmap. You always know what is happening, what is next and what it costs.
         </Reveal>

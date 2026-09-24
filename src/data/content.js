@@ -61,8 +61,8 @@ export const industries = [
 ];
 
 export const principles = [
-  { icon: 'Sparkles', title: 'Craft over templates', text: 'Every product is designed from first principles. No themes, no shortcuts.' },
-  { icon: 'Zap', title: 'Speed with rigour', text: 'Short sprints and weekly demos. Momentum without cutting corners.' },
+  { icon: 'Sparkles', title: 'Made for you, not from a template', text: 'Every product starts from your users and your goals. No themes, no shortcuts.' },
+  { icon: 'Zap', title: 'Speed with rigour', text: 'Short sprints and weekly demos. Fast, but never careless.' },
   { icon: 'ShieldCheck', title: 'Privacy by design', text: 'GDPR-compliant architecture, EU-hosted data options and secure defaults.' },
   { icon: 'LineChart', title: 'Outcomes, measured', text: 'We define success metrics up front and report on them after launch.' },
 ];
@@ -83,7 +83,7 @@ export const capabilities = [
 export const generalFaqs = [
   {
     q: 'What kind of companies do you work with?',
-    a: 'Mostly B2B companies, SaaS teams and funded startups in the Netherlands and wider EU, but we work with ambitious businesses of any size that care about quality.',
+    a: 'Mostly B2B companies, SaaS teams and funded startups in the Netherlands and wider EU, but we work with businesses of any size that care about quality.',
   },
   {
     q: 'How quickly can you start?',

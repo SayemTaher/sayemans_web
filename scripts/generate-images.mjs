@@ -46,7 +46,7 @@ const og = `
   ${wordmarkSvg({ id: 'og', color: '#f5f5f7', xmlns: false }).replace(/<svg viewBox="([^"]+)"[^>]*>/, '<svg x="110" y="118" height="34" width="260" viewBox="$1" preserveAspectRatio="xMinYMid meet">')}
 
   <text x="108" y="318" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#chrome)">Digital products,</text>
-  <text x="108" y="410" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#grad)">engineered with craft.</text>
+  <text x="108" y="410" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#grad)">built with passion.</text>
 
   <text x="110" y="500" font-family="${font}" font-size="26" fill="#a1a1a6">UI/UX · Web · Mobile apps · SaaS · Design systems</text>
   <text x="1090" y="500" text-anchor="end" font-family="${font}" font-size="24" font-weight="500" fill="#f5f5f7">Eindhoven, NL · sayemtaher.org</text>

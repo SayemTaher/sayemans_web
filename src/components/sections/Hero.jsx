@@ -38,7 +38,7 @@ export default function Hero() {
 
         <h1 className="mt-8 max-w-5xl text-display font-semibold">
           <RevealText as="span" animateOnMount delay={0.15} text="Digital products," className="block text-chrome" />
-          <RevealText as="span" animateOnMount delay={0.35} text="engineered with craft." className="block text-gradient pb-2" />
+          <RevealText as="span" animateOnMount delay={0.35} text="built with passion." className="block text-gradient pb-2" />
         </h1>
 
         <p
@@ -46,7 +46,7 @@ export default function Hero() {
           className="enter mt-7 max-w-2xl text-lg leading-relaxed text-fg-muted sm:text-xl"
         >
           SAYEMANS is a digital product studio from Eindhoven, the Netherlands. We design and build websites, SaaS platforms and apps
-          for B2B companies and ambitious startups, from first sketch to scale.
+          for B2B companies and growing startups, from the first sketch to launch day and long after.
         </p>
 
         <div style={{ '--d': '0.75s' }} className="enter mt-10 flex flex-col gap-3 sm:flex-row">

@@ -16,7 +16,7 @@ const rituals = [
 export default function Process() {
   return (
     <>
-      <PageHero eyebrow="Process" title="Clarity at every step." intro="A proven six-phase process that de-risks your investment and keeps momentum high from kickoff to growth." />
+      <PageHero eyebrow="Process" title="Clarity at every step." intro="A proven six-phase process that protects your budget and keeps you informed from the first meeting to launch and beyond." />
       <ProcessSticky cta={false} />
       <section className="container-x py-24">
         <SectionHeader eyebrow="Ways of working" title="How collaboration feels." />

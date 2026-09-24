@@ -96,7 +96,7 @@ export default function Contact() {
 
   return (
     <>
-      <PageHero eyebrow="Contact" title="Let’s build something great." intro={`Tell us about your product. We reply ${company.responseTime}, usually with a few smart questions and an invite for a free intro call.`} />
+      <PageHero eyebrow="Contact" title="Tell us about your idea." intro={`Tell us about your product. We reply ${company.responseTime}, usually with a few smart questions and an invite for a free intro call.`} />
 
       <section className="container-x grid gap-8 pb-16 lg:grid-cols-[1.6fr_1fr]">
         <Reveal>

@@ -159,6 +159,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-24 | Copy pass: removed overused buzzwords (craft, ambitious, effortless, momentum, next generation, etc.); new tagline "Digital products, built with passion." |
 | 2026-09-24 | Logo is now a custom-drawn SAYEMANS wordmark (no initial tile); favicon/app icons use the wordmark S. Hero dashboard replaced by a content-rich "Project Hub" (phases, sprint, activity, staging + Lighthouse/CWV, demo, budget). |
 | 2026-09-24 | New brand mark "Layered S" (src/brand/mark.js): navbar/footer/admin logo, favicon (SVG + 32px PNG), apple-touch, PWA + maskable icons, logo.svg/logo-white.svg/logo.png lockups, OG image, JSON-LD logo. |
 | 2026-09-24 | TaalMeester phone now shows the real app screenshot (assets-src/taalmeester_home.png → 33/54 KB WebP via `npm run images`). |

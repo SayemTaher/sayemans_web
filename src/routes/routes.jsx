@@ -137,7 +137,7 @@ export const routes = [
     sitemap: { priority: 0.7, changefreq: 'yearly' },
     seo: () => ({
       title: 'About',
-      description: 'SAYEMANS is a digital product studio in Eindhoven (KvK 85588105), founded in 2022 and focused on craft, speed and measurable outcomes.',
+      description: 'SAYEMANS is a digital product studio in Eindhoven (KvK 85588105), founded in 2022 and that cares about quality, clear communication and results you can measure.',
     }),
   },
   {

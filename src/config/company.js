@@ -11,9 +11,9 @@ export const company = {
   legalForm: 'Eenmanszaak', // sole proprietorship
   industry: 'Computer programming / software design (SBI 62100)',
   sbi: '62100',
-  tagline: 'Digital products, engineered with craft.',
+  tagline: 'Digital products, built with passion.',
   description:
-    'SAYEMANS is a digital product studio from Eindhoven, the Netherlands, that designs and builds websites, SaaS platforms, mobile apps and design systems for B2B companies and ambitious startups.',
+    'SAYEMANS is a digital product studio from Eindhoven, the Netherlands, that designs and builds websites, SaaS platforms, mobile apps and design systems for B2B companies and growing startups.',
   email: 'sayemans.inc@gmail.com',
   phone: null, // e.g. '+31 6 12345678'
   kvk: '85588105', // KvK (Chamber of Commerce) number

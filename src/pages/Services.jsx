@@ -11,7 +11,7 @@ export default function Services() {
     <>
       <PageHero
         eyebrow="Services"
-        title="From first idea to fully scaled."
+        title="From first idea to a product people use."
         intro="Eight disciplines, one integrated team. Engage us for a single service or the entire product lifecycle."
       >
         <Button to="/contact" variant="accent" size="lg">Get a proposal</Button>

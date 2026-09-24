@@ -24,7 +24,7 @@ export default function Home() {
 
       <ScrollStatement
         eyebrow="Why SAYEMANS"
-        text="We partner with B2B companies, SaaS teams and founders to turn complex ideas into products that feel effortless. Researched, designed, engineered and launched by one senior team. No hand-offs. No templates. Just craft."
+        text="We work with B2B companies, SaaS teams and founders to turn complicated ideas into products that are simple to use. One small team researches, designs, builds and launches it, and stays with you afterwards. No handovers, no templates. Honest work, done with passion."
       />
 
       <ServicesBento />
@@ -48,7 +48,7 @@ export default function Home() {
       </section>
 
       <section className="container-x py-24 sm:py-32">
-        <SectionHeader eyebrow="Who we serve" title="Built for teams that build." intro="From enterprise workflows to startup MVPs, we speak the language of your industry." />
+        <SectionHeader eyebrow="Who we serve" title="Built for teams that build." intro="From enterprise workflows to startup MVPs, we take the time to learn how your industry works." />
         <div className="mt-16">
           <FeatureGrid items={industries} />
         </div>

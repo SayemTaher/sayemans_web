@@ -26,11 +26,11 @@ export default function About() {
     <>
       <PageHero
         eyebrow="About"
-        title="A studio for the next generation of digital products."
+        title="A small studio with a lot of passion for good software."
         intro="SAYEMANS was founded in Eindhoven in 2022 with a simple belief: software should feel as considered as the best physical products."
       />
 
-      <ScrollStatement text="We are a small, senior team of designers and engineers. We would rather ship one exceptional product than ten average ones. We build our own products, so we understand what it takes to launch, grow and sustain one." />
+      <ScrollStatement text="We are a small, senior team of designers and engineers. We would rather do one product properly than ten in a hurry. We build our own products, so we understand what it takes to launch, grow and sustain one." />
 
       <StatsBand />
 

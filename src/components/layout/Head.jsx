@@ -19,7 +19,7 @@ export function buildHead(seo, pathname) {
       ['property', 'og:image', image],
       ['property', 'og:image:width', seo.image ? null : '1200'],
       ['property', 'og:image:height', seo.image ? null : '630'],
-      ['property', 'og:image:alt', 'SAYEMANS: digital products, engineered with craft.'],
+      ['property', 'og:image:alt', 'SAYEMANS: digital products, built with passion.'],
       ['property', 'og:locale', 'en_US'],
       ['name', 'twitter:card', 'summary_large_image'],
       ['name', 'twitter:title', title],

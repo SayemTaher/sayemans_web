@@ -69,7 +69,7 @@ const solutions = [
 export default function Solutions() {
   return (
     <>
-      <PageHero eyebrow="Solutions" title="Solutions shaped around your stage." intro="Whether you are modernising a B2B workflow or launching your first SaaS, we bring a proven playbook for your situation." />
+      <PageHero eyebrow="Solutions" title="Solutions shaped around your stage." intro="Whether you are modernising a B2B workflow or launching your first SaaS, we have done it before and know where the pitfalls are." />
 
       <section className="container-x py-12">
         <Stagger className="grid gap-5 md:grid-cols-2">

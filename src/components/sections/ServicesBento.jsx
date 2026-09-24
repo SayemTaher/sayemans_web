@@ -15,7 +15,7 @@ export default function ServicesBento({ limit = services.length, header = true }
         <SectionHeader
           eyebrow="What we do"
           title="Everything your product needs. Under one roof."
-          intro="Strategy, design, engineering and growth. One team, one process, zero hand-off friction."
+          intro="Strategy, design, engineering and growth. One team and one process, so nothing gets lost between agencies."
         />
       )}
       <Stagger className="mt-16 grid auto-rows-[minmax(220px,auto)] grid-cols-1 gap-4 md:grid-cols-6">

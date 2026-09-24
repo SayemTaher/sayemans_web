@@ -6,11 +6,11 @@ export const services = [
     slug: 'ui-ux-design',
     icon: 'PenTool',
     title: 'UI/UX Design',
-    kicker: 'Interfaces people love to use',
+    kicker: 'Interfaces that make sense',
     summary:
       'Research-led product design: user flows, wireframes, high-fidelity UI and interactive prototypes, grounded in real user behaviour.',
     description:
-      'Great software feels obvious. We get there by understanding your users first: interviews, analytics review and competitive audits. Then we turn those insights into flows, wireframes and pixel-precise interfaces. Every screen is prototyped and tested before a single line of production code is written, so you ship with confidence rather than assumptions.',
+      'Good software is easy to understand. We get there by understanding your users first: interviews, analytics review and competitive audits. Then we turn those insights into flows, wireframes and carefully detailed interfaces. Every screen is prototyped and tested before a single line of production code is written, so you ship with confidence rather than assumptions.',
     deliverables: [
       'UX research & stakeholder workshops',
       'User journeys, flows & information architecture',
@@ -69,7 +69,7 @@ export const services = [
     slug: 'saas-product-development',
     icon: 'Boxes',
     title: 'SaaS Product Development',
-    kicker: 'From MVP to scale',
+    kicker: 'From first version to growth',
     summary:
       'End-to-end SaaS builds with multi-tenant architecture, billing, auth, dashboards and the infrastructure to grow.',
     description:
@@ -90,11 +90,11 @@ export const services = [
     slug: 'design-systems',
     icon: 'Layers',
     title: 'Design Systems & Branding',
-    kicker: 'Consistency at scale',
+    kicker: 'One look, everywhere',
     summary:
       'Visual identities, component libraries and design tokens that keep every product and touchpoint coherent.',
     description:
-      'As products grow, consistency erodes. We build design systems that stop the drift: brand foundations, design tokens, accessible component libraries in Figma and code, and documentation your whole team can follow. The result is faster design, faster development and a brand that feels unmistakably yours.',
+      'As products grow, consistency erodes. We build design systems that stop the drift: brand foundations, design tokens, accessible component libraries in Figma and code, and documentation your whole team can follow. The result is faster design, faster development and a brand that looks and feels the same everywhere.',
     deliverables: [
       'Brand identity & visual language',
       'Design tokens (colour, type, spacing, motion)',
@@ -113,9 +113,9 @@ export const services = [
     title: 'Product Strategy & Consulting',
     kicker: 'Clarity before code',
     summary:
-      'Discovery sprints, product audits and technical roadmaps that de-risk your investment before you build.',
+      'Discovery sprints, product audits and technical roadmaps, so you know what to build before you spend money on it.',
     description:
-      'Not sure what to build, or why the current product under-performs? Our discovery sprints and audits give you clarity. We review UX, analytics, tech stack and market position, then deliver a prioritised roadmap with effort estimates, so every euro goes to what moves the needle.',
+      'Not sure what to build, or why the current product under-performs? Our discovery sprints and audits give you clarity. We review UX, analytics, tech stack and market position, then deliver a prioritised roadmap with effort estimates, so every euro goes to what actually makes a difference.',
     deliverables: [
       'Discovery & design sprints',
       'UX and conversion audits',
@@ -136,7 +136,7 @@ export const services = [
     summary:
       'Serverless back-ends, REST/GraphQL APIs, automation and integrations with the tools your business already runs on.',
     description:
-      'We connect the dots between your product and the rest of your stack. Serverless back-ends on Firebase and Cloudflare, secure APIs, CRM, ERP and payment integrations, and workflow automation that removes manual work, all monitored and documented.',
+      'We connect your product to the tools your business already uses. Serverless back-ends on Firebase and Cloudflare, secure APIs, CRM, ERP and payment integrations, and workflow automation that removes manual work, all monitored and documented.',
     deliverables: [
       'Serverless back-ends & APIs',
       'CRM, ERP & payment integrations',
@@ -153,7 +153,7 @@ export const services = [
     slug: 'care-and-growth',
     icon: 'LifeBuoy',
     title: 'Care & Growth Plans',
-    kicker: 'Launch is just the beginning',
+    kicker: 'Looked after, month after month',
     summary:
       'Ongoing maintenance, security updates, performance monitoring and continuous improvement after launch.',
     description:
