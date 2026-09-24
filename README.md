@@ -1,3 +1,5 @@
+<p><img src="public/logo.svg" alt="SAYEMANS" height="48" /></p>
+
 # SAYEMANS: Digital Product Studio Website
 
 Next-generation marketing site for **SAYEMANS**, built with React 19, Vite, Tailwind CSS 4 and an Apple Liquid Glass-inspired design system.
@@ -36,7 +38,7 @@ src/
 scripts/prerender.mjs   writes dist/<route>/index.html, 404.html, sitemap.xml
 firestore.rules         security rules (public create-only, admin read)
 wrangler.toml           Cloudflare Worker static-assets config
-scripts/generate-images.mjs  OG image + app icons (`npm run images`)
+src/brand/mark.js       logo source of truth (Layered S) → `npm run images` regenerates favicon, icons, logo files, OG image
 public/_headers         Cloudflare security & cache headers
 ```
 

@@ -14,7 +14,7 @@ export const organizationLd = () => ({
   name: company.name,
   legalName: company.legalName,
   url: company.siteUrl,
-  logo: `${company.siteUrl}/favicon.svg`,
+  logo: `${company.siteUrl}/icon-512.png`,
   image: `${company.siteUrl}${DEFAULT_OG}`,
   description: company.description,
   email: company.email,

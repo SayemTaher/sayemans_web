@@ -1,9 +1,11 @@
-// Generates raster brand assets from SVG: Open Graph image + app icons.
+// Generates brand assets from the logo source (src/brand/mark.js):
+// favicon + logo SVGs, app icons, Open Graph image, product screenshots.
 // Run manually after brand changes: `npm run images` (outputs are committed).
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Resvg } from '@resvg/resvg-js';
+import { markSvg, lockupSvg } from '../src/brand/mark.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const pub = (f) => path.join(root, 'public', f);
@@ -41,9 +43,8 @@ const og = `
 
   <rect x="60" y="60" width="1080" height="510" rx="44" fill="url(#glass)" stroke="url(#rim)" stroke-width="1.5"/>
 
-  <rect x="110" y="112" width="56" height="56" rx="16" fill="url(#logo)"/>
-  <text x="138" y="152" text-anchor="middle" font-family="${font}" font-size="30" font-weight="700" fill="#fff">S</text>
-  <text x="186" y="150" font-family="${font}" font-size="26" font-weight="600" letter-spacing="5" fill="#f5f5f7">SAYEMANS</text>
+  ${markSvg({ id: 'og', xmlns: false }).replace('<svg viewBox="0 0 64 64" role="img" aria-label="SAYEMANS">', '<svg x="108" y="110" width="60" height="60" viewBox="0 0 64 64">')}
+  <text x="186" y="151" font-family="${font}" font-size="26" font-weight="600" letter-spacing="5" fill="#f5f5f7">SAYEMANS</text>
 
   <text x="108" y="318" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#chrome)">Digital products,</text>
   <text x="108" y="410" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#grad)">engineered with craft.</text>
@@ -54,12 +55,23 @@ const og = `
 
 render(og, 1200, 'og-image.png');
 
-// ── App icons from the favicon (solid background for iOS home screen) ──
-const favicon = fs.readFileSync(pub('favicon.svg'), 'utf8');
-const squareIcon = favicon.replace(/rx="15"/g, 'rx="0"'); // iOS applies its own mask
-render(squareIcon, 180, 'apple-touch-icon.png');
-render(favicon, 192, 'icon-192.png');
-render(favicon, 512, 'icon-512.png');
+// ── Logo files ──
+const write = (out, content) => {
+  fs.writeFileSync(pub(out), content.trim() + '\n');
+  console.log(`✓ public/${out}`);
+};
+write('favicon.svg', markSvg());
+write('logo-mark.svg', markSvg());
+write('logo.svg', lockupSvg({ color: '#1d1d1f' }));
+write('logo-white.svg', lockupSvg({ color: '#f5f5f7' }));
+
+// ── Raster icons ──
+render(markSvg(), 32, 'favicon-32.png');
+render(markSvg({ shape: 'square' }), 180, 'apple-touch-icon.png'); // iOS applies its own mask
+render(markSvg(), 192, 'icon-192.png');
+render(markSvg(), 512, 'icon-512.png');
+render(markSvg({ shape: 'square', glyphScale: 0.78 }), 512, 'icon-maskable-512.png'); // Android safe zone
+render(lockupSvg(), 660, 'logo.png');
 
 // ── Product screenshots (source in assets-src/) → responsive WebP ──
 const sharp = (await import('sharp')).default;
