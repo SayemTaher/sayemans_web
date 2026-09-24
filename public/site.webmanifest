@@ -1,0 +1,9 @@
+{
+  "name": "SAYEMANS — Digital Product Studio",
+  "short_name": "SAYEMANS",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "theme_color": "#000000",
+  "background_color": "#000000",
+  "display": "standalone",
+  "start_url": "/"
+}

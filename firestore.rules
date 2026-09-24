@@ -1,0 +1,79 @@
+rules_version = '2';
+
+// SAYEMANS — Firestore security rules
+// Public visitors may only CREATE well-formed documents. Only admins
+// (uid present in /admins/{uid}) can read or change anything.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAdmin() {
+      return request.auth != null
+        && exists(/databases/$(database)/documents/admins/$(request.auth.uid));
+    }
+
+    function str(field, min, max) {
+      return request.resource.data[field] is string
+        && request.resource.data[field].size() >= min
+        && request.resource.data[field].size() <= max;
+    }
+
+    function optStr(field, max) {
+      return !(field in request.resource.data)
+        || (request.resource.data[field] is string && request.resource.data[field].size() <= max);
+    }
+
+    // ── Project inquiries from the contact form ──
+    match /leads/{leadId} {
+      allow create: if request.resource.data.keys().hasOnly([
+          'name', 'email', 'company', 'website', 'services', 'budget', 'timeline',
+          'message', 'consent', 'status', 'source', 'createdAt', 'meta'
+        ])
+        && str('name', 1, 120)
+        && str('email', 5, 200)
+        && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        && str('message', 10, 5000)
+        && optStr('company', 160)
+        && optStr('website', 300)
+        && optStr('budget', 60)
+        && optStr('timeline', 60)
+        && request.resource.data.services is list
+        && request.resource.data.services.size() <= 12
+        && request.resource.data.consent == true
+        && request.resource.data.status == 'new'
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── Newsletter subscribers (doc id = lowercase email) ──
+    match /subscribers/{email} {
+      allow create: if request.resource.data.keys().hasOnly(['email', 'source', 'createdAt'])
+        && str('email', 5, 200)
+        && request.resource.data.email == email
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if isAdmin();
+    }
+
+    // ── First-party analytics events (only written after cookie consent) ──
+    match /events/{eventId} {
+      allow create: if request.resource.data.keys().hasOnly([
+          'type', 'name', 'path', 'referrer', 'sessionId', 'visitorId', 'utm',
+          'device', 'props', 'createdAt'
+        ])
+        && str('type', 1, 40)
+        && str('path', 1, 500)
+        && str('sessionId', 8, 64)
+        && request.resource.data.createdAt == request.time;
+      allow read, delete: if isAdmin();
+    }
+
+    // ── Admin allowlist: managed from the Firebase console only ──
+    match /admins/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
