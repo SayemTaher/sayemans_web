@@ -226,7 +226,6 @@
   /* Above-the-fold entrance: pure CSS so it plays as soon as HTML paints (good LCP). */
   .enter {
     animation: enter 1s var(--ease-out-expo) both;
-    animation-delay: var(--d, 0s);
   }
 
   .container-x {
@@ -270,4 +269,101 @@
     backdrop-filter: none;
     background: var(--bg-elevated);
   }
+}
+
+/* ─────────────────────────── Playful motion layer ───────────────────────────
+   Overshoot springs used sparingly on top of the Apple-style base motion.   */
+:root {
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  /* Delay added to above-the-fold entrances while the opening intro plays */
+  --intro: 1.25s;
+}
+.intro-seen { --intro: 0s; }
+
+/* Opening intro: SAYEMANS letters drop in and land with a squash */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 1.25rem;
+  background: var(--bg);
+  animation: intro-out 0.75s var(--ease-out-expo) 1.3s both;
+}
+.intro-seen .intro { display: none; }
+.intro-word {
+  display: flex;
+  font-size: clamp(2.6rem, 10vw, 7.5rem);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1;
+  padding-left: 0.14em; /* optical balance for trailing tracking */
+}
+.intro-letter {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  animation: intro-drop 0.85s calc(0.08s + var(--i) * 55ms) both;
+}
+.intro-line {
+  height: 3px;
+  width: min(46vw, 420px);
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--color-blue), var(--color-indigo), var(--color-purple), var(--color-pink));
+  transform-origin: 50% 50%;
+  animation: intro-line 0.7s var(--ease-out-expo) 0.75s both;
+}
+.intro-sub {
+  font-size: 15px;
+  color: var(--fg-muted);
+  animation: intro-fade 0.6s ease-out 0.85s both;
+}
+@keyframes intro-drop {
+  0%   { opacity: 0; transform: translateY(-70vh) rotate(var(--r, 0deg)); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  55%  { opacity: 1; transform: translateY(0) scale(1.18, 0.78); animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+  72%  { transform: translateY(-14%) scale(0.94, 1.08); }
+  86%  { transform: translateY(0) scale(1.04, 0.96); }
+  100% { opacity: 1; transform: none; }
+}
+@keyframes intro-line {
+  from { transform: scaleX(0); opacity: 0; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+@keyframes intro-fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes intro-out {
+  0%   { clip-path: inset(0 0 0 0 round 0); }
+  100% { clip-path: inset(0 0 100% 0 round 0 0 40px 40px); visibility: hidden; }
+}
+.intro.intro-skip { animation-delay: 0s; animation-duration: 0.45s; }
+
+/* Hero entrances wait for the intro (see .enter) */
+.enter { animation-delay: calc(var(--d, 0s) + var(--intro, 0s)); }
+
+/* Logo letter wave on hover */
+.wm-letter { display: inline-block; }
+.group:hover .wm-letter,
+.group:focus-visible .wm-letter {
+  animation: wm-wave 0.6s var(--ease-bounce) calc(var(--i) * 35ms);
+}
+@keyframes wm-wave {
+  0%, 100% { transform: none; }
+  40% { transform: translateY(-30%); }
+}
+
+/* Chat typing indicator */
+.typing-dot { animation: typing 1s ease-in-out infinite; }
+.typing-dot:nth-child(2) { animation-delay: 0.15s; }
+.typing-dot:nth-child(3) { animation-delay: 0.3s; }
+@keyframes typing {
+  0%, 60%, 100% { transform: none; opacity: 0.35; }
+  30% { transform: translateY(-3px); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --intro: 0s; }
+  .intro { display: none; }
 }

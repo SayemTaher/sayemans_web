@@ -162,6 +162,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-25 | Motion & "show, don't tell" pass (inspired by Mentic's playful springs): CSS opening intro (bouncing SAYEMANS letters, once per session), logo letter-wave on hover, before/after checkout slider, chat-thread "week with SAYEMANS", scroll-velocity kinetic word band, spring-pop service icons. Industries/Principles moved off the homepage. |
 | 2026-09-25 | Added affiliated partner Mentic (mentic.io): homepage section + /partners page, facts verified from their site, independence disclaimer. |
 | 2026-09-25 | Live domain is **sayemans.org** (sayemtaher.org does not exist, NXDOMAIN): all URLs, sitemap, OG, CORS origins switched. Found live site stuck on commit b80ce56 → Worker deploys (1a364c6, faab0db) not live yet. Firestore DB + Auth now exist; security rules still Firebase defaults (deny all). |
 | 2026-09-25 | Firebase project `sayemans` wired into production builds. Leads/subscribers now saved via email OR Firestore (either succeeding counts), with an 8s Firestore timeout. Firestore + Auth still need enabling in the console. |

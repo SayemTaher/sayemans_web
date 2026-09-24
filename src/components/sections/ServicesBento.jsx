@@ -29,9 +29,15 @@ export default function ServicesBento({ limit = services.length, header = true }
                   className="relative flex h-full flex-col overflow-hidden rounded-[28px] p-7 transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:-translate-y-1 sm:p-8"
                 >
                   <div className={`pointer-events-none absolute -top-24 -right-24 size-64 rounded-full bg-gradient-to-br ${s.tint} opacity-20 blur-3xl transition-opacity duration-700 group-hover:opacity-40`} />
-                  <span className={`grid size-12 place-items-center rounded-2xl bg-gradient-to-br ${s.tint} text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.4)]`}>
+                  <motion.span
+                    initial={{ scale: 0.4, rotate: -14, opacity: 0 }}
+                    whileInView={{ scale: 1, rotate: 0, opacity: 1 }}
+                    viewport={{ once: true, margin: '0px 0px -10% 0px' }}
+                    transition={{ type: 'spring', stiffness: 420, damping: 14, delay: 0.15 + i * 0.05 }}
+                    className={`grid size-12 place-items-center rounded-2xl bg-gradient-to-br ${s.tint} text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.4)] transition-transform duration-500 ease-[var(--ease-bounce)] group-hover:-rotate-8 group-hover:scale-110`}
+                  >
                     <Icon name={s.icon} size={22} />
-                  </span>
+                  </motion.span>
                   <p className="mt-6 text-[13px] font-medium text-fg-subtle">{s.kicker}</p>
                   <h3 className={`mt-1 font-semibold tracking-tight ${big ? 'text-3xl sm:text-4xl' : 'text-xl'}`}>{s.title}</h3>
                   <p className={`mt-3 leading-relaxed text-fg-muted ${big ? 'max-w-md text-[17px]' : 'text-[15px]'}`}>{s.summary}</p>

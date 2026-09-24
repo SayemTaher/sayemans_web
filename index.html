@@ -18,6 +18,9 @@
           var t = localStorage.getItem('sayemans:theme') || 'system';
           if (t === 'system') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
           document.documentElement.dataset.theme = t;
+          // Opening intro plays once per browser session.
+          if (sessionStorage.getItem('sayemans:intro')) document.documentElement.classList.add('intro-seen');
+          else sessionStorage.setItem('sayemans:intro', '1');
         } catch (e) {}
       })();
     </script>

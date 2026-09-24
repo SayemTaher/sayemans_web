@@ -2,7 +2,7 @@ import {
   ArrowRight, ArrowUpRight, Sparkles, Layers, Code2, Smartphone, Rocket, Palette, LineChart, ShieldCheck,
   Menu, X, Sun, Moon, Monitor, Check, Mail, MapPin, Building2, Cloud, Cpu, Workflow, Boxes, Gauge, Globe,
   Apple, Flame, Star, BookOpen, Headphones, Trophy, LogOut, Loader2, Plus, Minus, Compass, PenTool, Server,
-  LifeBuoy, BarChart3, Users, Zap, Lock, Clock, Calendar, ChevronDown, Inbox, MousePointerClick, Eye,
+  LifeBuoy, BarChart3, Users, Zap, Lock, Clock, Calendar, ChevronDown, ChevronLeft, ChevronRight, Inbox, MousePointerClick, Eye,
 } from 'lucide-react';
 
 const Instagram = (props) => (
@@ -22,7 +22,7 @@ const icons = {
   ArrowRight, ArrowUpRight, Sparkles, Layers, Code2, Smartphone, Rocket, Palette, LineChart, ShieldCheck,
   Menu, X, Sun, Moon, Monitor, Check, Mail, MapPin, Building2, Cloud, Cpu, Workflow, Boxes, Gauge, Globe,
   Apple, Flame, Star, BookOpen, Headphones, Trophy, LogOut, Loader2, Plus, Minus, Compass, PenTool, Server,
-  LifeBuoy, BarChart3, Users, Zap, Lock, Clock, Calendar, ChevronDown, Inbox, MousePointerClick, Eye,
+  LifeBuoy, BarChart3, Users, Zap, Lock, Clock, Calendar, ChevronDown, ChevronLeft, ChevronRight, Inbox, MousePointerClick, Eye,
   Instagram, Linkedin,
 };
 
