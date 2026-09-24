@@ -81,7 +81,7 @@ export default function Contact() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (form.hp) return; // honeypot: silently drop bots
+    if (form.hp) return setStatus('sent'); // honeypot: bots get a fake success
     if (!validate()) return;
     setStatus('sending');
     try {

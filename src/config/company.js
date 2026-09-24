@@ -14,7 +14,7 @@ export const company = {
   tagline: 'Digital products, built with passion.',
   description:
     'SAYEMANS is a digital product studio from Eindhoven, the Netherlands, that designs and builds websites, SaaS platforms, mobile apps and design systems for B2B companies and growing startups.',
-  email: 'sayemans.inc@gmail.com',
+  email: 'sayemans.org@gmail.com',
   phone: null, // e.g. '+31 6 12345678'
   kvk: '85588105', // KvK (Chamber of Commerce) number
   establishmentNumber: '000051624834', // KvK vestigingsnummer (hoofdvestiging)

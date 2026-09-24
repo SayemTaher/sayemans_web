@@ -43,7 +43,7 @@ const og = `
 
   <rect x="60" y="60" width="1080" height="510" rx="44" fill="url(#glass)" stroke="url(#rim)" stroke-width="1.5"/>
 
-  ${wordmarkSvg({ id: 'og', color: '#f5f5f7', xmlns: false }).replace(/<svg viewBox="([^"]+)"[^>]*>/, '<svg x="110" y="118" height="34" width="260" viewBox="$1" preserveAspectRatio="xMinYMid meet">')}
+  <text x="110" y="146" font-family="${font}" font-size="28" font-weight="600" letter-spacing="5.6" fill="#f5f5f7">SAYEMANS</text>
 
   <text x="108" y="318" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#chrome)">Digital products,</text>
   <text x="108" y="410" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#grad)">built with passion.</text>
@@ -61,8 +61,8 @@ const write = (out, content) => {
 };
 write('favicon.svg', iconSvg());
 write('logo-icon.svg', iconSvg());
-write('logo.svg', wordmarkSvg({ color: '#1d1d1f', pad: 4 }));
-write('logo-white.svg', wordmarkSvg({ color: '#f5f5f7', pad: 4 }));
+write('logo.svg', wordmarkSvg({ color: '#1d1d1f' }));
+write('logo-white.svg', wordmarkSvg({ color: '#f5f5f7' }));
 
 // ── Raster icons ──
 render(iconSvg(), 32, 'favicon-32.png');
@@ -70,8 +70,8 @@ render(iconSvg({ shape: 'square' }), 180, 'apple-touch-icon.png'); // iOS applie
 render(iconSvg(), 192, 'icon-192.png');
 render(iconSvg(), 512, 'icon-512.png');
 render(iconSvg({ shape: 'square', glyphScale: 0.78 }), 512, 'icon-maskable-512.png'); // Android safe zone
-render(wordmarkSvg({ color: '#1d1d1f', pad: 4 }), 1200, 'logo.png');
-render(wordmarkSvg({ color: '#f5f5f7', pad: 4 }), 1200, 'logo-white.png');
+render(wordmarkSvg({ color: '#1d1d1f' }), 1200, 'logo.png');
+render(wordmarkSvg({ color: '#f5f5f7' }), 1200, 'logo-white.png');
 
 // ── Product screenshots (source in assets-src/) → responsive WebP ──
 const sharp = (await import('sharp')).default;

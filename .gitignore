@@ -8,3 +8,4 @@ dist-ssr
 .firebase
 *.log
 .DS_Store
+.dev.vars

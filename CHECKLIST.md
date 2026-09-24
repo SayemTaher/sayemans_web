@@ -32,7 +32,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 | 8 | Social links (LinkedIn, Instagram, GitHub) | `company.socials` |
 | 9 | Phone number (optional) | `company.phone` |
 | 10 | Confirm TaalMeester "What we delivered" list & stats | `src/data/products.js` |
-| 11 | ~~Logo~~ ✅ Custom SAYEMANS wordmark (`src/brand/mark.js`); favicon uses its S | done |
+| 11 | ~~Logo~~ ✅ Minimal text logo "SAYEMANS" (`src/brand/mark.js`) | done |
 | 12 | Legal review of Privacy / Terms / Cookie pages (templates, not legal advice) | `src/pages/legal/*` |
 
 ---
@@ -120,8 +120,9 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 ## Phase 3: Hardening & growth 🟡
 
 - [ ] Cloudflare Turnstile on the contact form, verified in a Pages Function (`functions/api/lead.js`)
-- [ ] Email notification on new lead (Firebase Extension "Trigger Email" or Pages Function + Resend/Postmark)
-- [ ] Auto-reply email to the prospect
+- [x] Email on new lead + newsletter sign-up: Worker `/api/contact` & `/api/subscribe` → Resend → sayemans.org@gmail.com (code done, tested locally)
+- [ ] 🔴 Add `RESEND_API_KEY` secret in Cloudflare (Resend account must be registered with sayemans.org@gmail.com until a domain is verified)
+- [ ] Verify `sayemtaher.org` in Resend → set `MAIL_FROM` to `hello@sayemtaher.org` and `CONFIRMATION_EMAILS="true"` (auto-reply to visitors)
 - [ ] Firebase App Check enforcement
 - [ ] Data retention job: delete `events` older than 14 months (scheduled Cloud Function / Cloudflare Cron Worker)
 - [ ] Dutch translation (`/nl/*`) with `hreflang` (i18n-ready structure: move copy into `src/locales`)
@@ -159,6 +160,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-25 | Contact form now emails inquiries via Cloudflare Worker + Resend (to sayemans.org@gmail.com); business email changed to sayemans.org@gmail.com; logo simplified to plain text name; URLs served without trailing slash. |
 | 2026-09-24 | Copy pass: removed overused buzzwords (craft, ambitious, effortless, momentum, next generation, etc.); new tagline "Digital products, built with passion." |
 | 2026-09-24 | Logo is now a custom-drawn SAYEMANS wordmark (no initial tile); favicon/app icons use the wordmark S. Hero dashboard replaced by a content-rich "Project Hub" (phases, sprint, activity, staging + Lighthouse/CWV, demo, budget). |
 | 2026-09-24 | New brand mark "Layered S" (src/brand/mark.js): navbar/footer/admin logo, favicon (SVG + 32px PNG), apple-touch, PWA + maskable icons, logo.svg/logo-white.svg/logo.png lockups, OG image, JSON-LD logo. |

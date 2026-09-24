@@ -87,7 +87,7 @@ export default function ProjectHub() {
     <div aria-hidden="true" className="grid h-full grid-cols-[168px_minmax(0,1fr)] text-left max-md:grid-cols-1">
       {/* Sidebar */}
       <aside className="hidden flex-col border-r border-line p-4 md:flex">
-        <Wordmark height={11} className="mb-1 text-fg" />
+        <Wordmark size={11} className="mb-1.5 text-fg" />
         <p className="mb-5 text-[10px] text-fg-subtle">Client hub</p>
         {[
           ['Overview', 'Gauge'],

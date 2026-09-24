@@ -3,8 +3,42 @@ import { localDb } from './localAdapter.js';
 import { getAttribution } from './analytics.js';
 
 /**
- * Submit a project inquiry. Shape is enforced by firestore.rules.
- * @returns {Promise<{ id: string }>}
+ * POST to the Cloudflare Worker (worker/index.js). Returns the parsed JSON.
+ * In `vite dev` there is no Worker, so a 404 falls back to the local adapter.
+ */
+async function postApi(path, payload) {
+  const res = await fetch(path, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  if (res.status === 404 && import.meta.env.DEV) return { ok: true, devFallback: true };
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data.ok) {
+    const err = new Error(data.error || `Request failed (${res.status})`);
+    err.fields = data.errors;
+    throw err;
+  }
+  return data;
+}
+
+/** Best-effort copy to Firestore (admin dashboard). Never blocks the user. */
+async function storeCopy(collection, data) {
+  try {
+    if (!isFirebaseConfigured) {
+      localDb.add(collection, data);
+      return;
+    }
+    const { db, fs } = await getDb();
+    await fs.addDoc(fs.collection(db, collection), { ...data, createdAt: fs.serverTimestamp() });
+  } catch (err) {
+    if (import.meta.env.DEV) console.warn(`[${collection}] store failed`, err);
+  }
+}
+
+/**
+ * Submit a project inquiry: emailed to the studio via /api/contact
+ * (Resend), plus a copy in Firestore `leads` when Firebase is configured.
  */
 export async function submitLead(input) {
   const lead = {
@@ -22,21 +56,22 @@ export async function submitLead(input) {
     meta: getAttribution(),
   };
 
-  if (!isFirebaseConfigured) {
-    const doc = localDb.add('leads', lead);
-    return { id: doc.id };
-  }
-  const { db, fs } = await getDb();
-  const ref = await fs.addDoc(fs.collection(db, 'leads'), { ...lead, createdAt: fs.serverTimestamp() });
-  return { id: ref.id };
+  const result = await postApi('/api/contact', { ...lead, hp: input.hp || '' });
+  storeCopy('leads', lead);
+  return result;
 }
 
 export async function subscribe(email, source = 'footer') {
   const clean = email.trim().toLowerCase();
-  if (!isFirebaseConfigured) {
+  await postApi('/api/subscribe', { email: clean, source });
+  if (isFirebaseConfigured) {
+    try {
+      const { db, fs } = await getDb();
+      await fs.setDoc(fs.doc(db, 'subscribers', clean), { email: clean, source, createdAt: fs.serverTimestamp() });
+    } catch {
+      /* optional */
+    }
+  } else {
     localDb.add('subscribers', { email: clean, source });
-    return;
   }
-  const { db, fs } = await getDb();
-  await fs.setDoc(fs.doc(db, 'subscribers', clean), { email: clean, source, createdAt: fs.serverTimestamp() });
 }

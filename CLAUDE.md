@@ -8,6 +8,7 @@ Website for SAYEMANS (digital product studio, NL). React 19 + Vite 8 + Tailwind 
 - Routing, SEO metadata, prerender list and sitemap all come from `src/routes/routes.jsx`. New pages need one entry there.
 - Content lives in `src/data/*` and `src/config/company.js`; components should not hardcode copy that belongs there.
 - State: `src/store` is a Redux-compatible Context store. Keep slices pure (return new state) so an RTK migration stays drop-in.
+- Email: `worker/index.js` (`/api/contact`, `/api/subscribe`) sends via Resend; `RESEND_API_KEY` is a Cloudflare secret, never committed.
 - Firebase is lazy-loaded and optional; every service must keep working with `localAdapter` when env vars are missing.
 
 ## Gotchas

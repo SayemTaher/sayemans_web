@@ -1,12 +1,33 @@
-# Cloudflare Workers (static assets) — deployed by Workers Builds on every push
-# to `main` (deploy command: `npx wrangler deploy`).
+# Cloudflare Worker — deployed by Workers Builds on every push to `main`
+# (deploy command: `npx wrangler deploy`).
 # `name` must match the Worker's name in the Cloudflare dashboard.
 name = "sayemans-web"
 compatibility_date = "2026-09-01"
+main = "worker/index.js"
 
 [assets]
 directory = "./dist"
-# /pricing → dist/pricing/index.html (prerendered pages)
-html_handling = "auto-trailing-slash"
+binding = "ASSETS"
+# Only /api/* runs the Worker; everything else is served straight from dist/.
+run_worker_first = ["/api/*"]
+# /pricing → dist/pricing/index.html, served without trailing slash (matches canonicals)
+html_handling = "drop-trailing-slash"
 # Unknown URLs → dist/404.html with a 404 status (good for SEO)
 not_found_handling = "404-page"
+
+[vars]
+# Where inquiries are delivered.
+CONTACT_TO = "sayemans.org@gmail.com"
+# Sender. Until a domain is verified in Resend, only onboarding@resend.dev works,
+# and it can only deliver to the email address of the Resend account owner.
+MAIL_FROM = "SAYEMANS Website <onboarding@resend.dev>"
+# Set to "true" after verifying sayemtaher.org in Resend (and changing MAIL_FROM
+# to e.g. "SAYEMANS <hello@sayemtaher.org>") to auto-reply to visitors.
+CONFIRMATION_EMAILS = "false"
+
+[observability]
+enabled = true
+
+# Secret (never commit): RESEND_API_KEY
+#   Dashboard → Worker → Settings → Variables and Secrets → Add → Secret
+#   or: npx wrangler secret put RESEND_API_KEY

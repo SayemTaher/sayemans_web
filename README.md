@@ -75,6 +75,17 @@ Hosted as a Cloudflare Worker serving `dist/` (config: `wrangler.toml`). Workers
 
 From the CLI: `npm run deploy` (requires `wrangler login`).
 
+## Contact form email (Resend)
+
+`worker/index.js` handles `POST /api/contact` and `/api/subscribe`. It validates each submission, blocks other origins and honeypot bots, and emails it to `CONTACT_TO` (`sayemans.org@gmail.com`) through [Resend](https://resend.com), whose free tier includes 3,000 emails per month. Reply-to is set to the visitor, so you can answer straight from Gmail.
+
+1. Create a free Resend account **with sayemans.org@gmail.com**. Until you verify a domain, Resend only delivers to the account owner's address.
+2. Resend → API Keys → create a key with *Sending access*.
+3. Cloudflare → Worker → Settings → Variables and Secrets → add a **Secret** named `RESEND_API_KEY`, then redeploy.
+4. Optional: in Resend → Domains, add `sayemtaher.org` and its DNS records in Cloudflare. Then set `MAIL_FROM` to `SAYEMANS <hello@sayemtaher.org>` and `CONFIRMATION_EMAILS = "true"` in `wrangler.toml` so visitors get an automatic confirmation.
+
+Local test: `npm run build && npx wrangler dev`, with the key in `.dev.vars` (git-ignored).
+
 ## State management & Redux migration
 
 `src/store` exposes the Redux API (`createSlice`, `combineReducers`, `dispatch`, `subscribe`, middleware, thunks) and react-redux-style hooks (`useAppSelector`, `useAppDispatch`) over React Context + `useSyncExternalStore`. To move to Redux Toolkit, install `@reduxjs/toolkit react-redux`, swap `createStore` for `configureStore`, and replace `StoreProvider` with `<Provider>`. Slices and components stay the same.
