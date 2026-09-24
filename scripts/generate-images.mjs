@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Resvg } from '@resvg/resvg-js';
-import { markSvg, lockupSvg } from '../src/brand/mark.js';
+import { wordmarkSvg, iconSvg } from '../src/brand/mark.js';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const pub = (f) => path.join(root, 'public', f);
@@ -43,8 +43,7 @@ const og = `
 
   <rect x="60" y="60" width="1080" height="510" rx="44" fill="url(#glass)" stroke="url(#rim)" stroke-width="1.5"/>
 
-  ${markSvg({ id: 'og', xmlns: false }).replace('<svg viewBox="0 0 64 64" role="img" aria-label="SAYEMANS">', '<svg x="108" y="110" width="60" height="60" viewBox="0 0 64 64">')}
-  <text x="186" y="151" font-family="${font}" font-size="26" font-weight="600" letter-spacing="5" fill="#f5f5f7">SAYEMANS</text>
+  ${wordmarkSvg({ id: 'og', color: '#f5f5f7', xmlns: false }).replace(/<svg viewBox="([^"]+)"[^>]*>/, '<svg x="110" y="118" height="34" width="260" viewBox="$1" preserveAspectRatio="xMinYMid meet">')}
 
   <text x="108" y="318" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#chrome)">Digital products,</text>
   <text x="108" y="410" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#grad)">engineered with craft.</text>
@@ -60,18 +59,19 @@ const write = (out, content) => {
   fs.writeFileSync(pub(out), content.trim() + '\n');
   console.log(`✓ public/${out}`);
 };
-write('favicon.svg', markSvg());
-write('logo-mark.svg', markSvg());
-write('logo.svg', lockupSvg({ color: '#1d1d1f' }));
-write('logo-white.svg', lockupSvg({ color: '#f5f5f7' }));
+write('favicon.svg', iconSvg());
+write('logo-icon.svg', iconSvg());
+write('logo.svg', wordmarkSvg({ color: '#1d1d1f', pad: 4 }));
+write('logo-white.svg', wordmarkSvg({ color: '#f5f5f7', pad: 4 }));
 
 // ── Raster icons ──
-render(markSvg(), 32, 'favicon-32.png');
-render(markSvg({ shape: 'square' }), 180, 'apple-touch-icon.png'); // iOS applies its own mask
-render(markSvg(), 192, 'icon-192.png');
-render(markSvg(), 512, 'icon-512.png');
-render(markSvg({ shape: 'square', glyphScale: 0.78 }), 512, 'icon-maskable-512.png'); // Android safe zone
-render(lockupSvg(), 660, 'logo.png');
+render(iconSvg(), 32, 'favicon-32.png');
+render(iconSvg({ shape: 'square' }), 180, 'apple-touch-icon.png'); // iOS applies its own mask
+render(iconSvg(), 192, 'icon-192.png');
+render(iconSvg(), 512, 'icon-512.png');
+render(iconSvg({ shape: 'square', glyphScale: 0.78 }), 512, 'icon-maskable-512.png'); // Android safe zone
+render(wordmarkSvg({ color: '#1d1d1f', pad: 4 }), 1200, 'logo.png');
+render(wordmarkSvg({ color: '#f5f5f7', pad: 4 }), 1200, 'logo-white.png');
 
 // ── Product screenshots (source in assets-src/) → responsive WebP ──
 const sharp = (await import('sharp')).default;

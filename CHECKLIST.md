@@ -32,7 +32,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 | 8 | Social links (LinkedIn, Instagram, GitHub) | `company.socials` |
 | 9 | Phone number (optional) | `company.phone` |
 | 10 | Confirm TaalMeester "What we delivered" list & stats | `src/data/products.js` |
-| 11 | ~~Logo~~ ✅ "Layered S" mark designed (`src/brand/mark.js`); swap in your own anytime | done |
+| 11 | ~~Logo~~ ✅ Custom SAYEMANS wordmark (`src/brand/mark.js`); favicon uses its S | done |
 | 12 | Legal review of Privacy / Terms / Cookie pages (templates, not legal advice) | `src/pages/legal/*` |
 
 ---
@@ -159,6 +159,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-24 | Logo is now a custom-drawn SAYEMANS wordmark (no initial tile); favicon/app icons use the wordmark S. Hero dashboard replaced by a content-rich "Project Hub" (phases, sprint, activity, staging + Lighthouse/CWV, demo, budget). |
 | 2026-09-24 | New brand mark "Layered S" (src/brand/mark.js): navbar/footer/admin logo, favicon (SVG + 32px PNG), apple-touch, PWA + maskable icons, logo.svg/logo-white.svg/logo.png lockups, OG image, JSON-LD logo. |
 | 2026-09-24 | TaalMeester phone now shows the real app screenshot (assets-src/taalmeester_home.png → 33/54 KB WebP via `npm run images`). |
 | 2026-09-24 | Light-mode link blue #0066cc (contrast), stronger mockup text; pushed to trigger Cloudflare redeploy. |

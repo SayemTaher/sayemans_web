@@ -38,7 +38,7 @@ src/
 scripts/prerender.mjs   writes dist/<route>/index.html, 404.html, sitemap.xml
 firestore.rules         security rules (public create-only, admin read)
 wrangler.toml           Cloudflare Worker static-assets config
-src/brand/mark.js       logo source of truth (Layered S) → `npm run images` regenerates favicon, icons, logo files, OG image
+src/brand/mark.js       logo source of truth (SAYEMANS wordmark + S app icon) → `npm run images` regenerates favicon, icons, logo files, OG image
 public/_headers         Cloudflare security & cache headers
 ```
 
