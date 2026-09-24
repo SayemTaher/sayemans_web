@@ -114,7 +114,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 - [ ] Google Search Console + Bing Webmaster: verify and submit the sitemap
 - [ ] Test: form submit → lead appears in `/admin`; analytics after consent
 - [x] GitHub Actions CI (lint → build → verify prerender)
-- [~] Lighthouse (local, mobile sim): Perf 90–94, A11y 96–100, Best Practices 100, SEO 100. Remaining: homepage scroll-statement dim words and light-mode blue link contrast; CSS inlining for FCP
+- [~] Lighthouse (local, mobile sim): Perf 90–94, A11y 96–100, Best Practices 100, SEO 100. Remaining: homepage scroll-statement dim words (intentional effect); CSS inlining for FCP
 - [ ] Re-run Lighthouse on the live domain
 
 ## Phase 3: Hardening & growth 🟡
@@ -159,6 +159,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-24 | Light-mode link blue #0066cc (contrast), stronger mockup text; pushed to trigger Cloudflare redeploy. |
 | 2026-09-24 | Switched hosting config to Cloudflare Workers static assets (fixes `wrangler deploy` error). Added OG image, app icons, CI, CSS-first hero entrance (Speed Index 5.9s → 2.8s), contrast fixes. |
 | 2026-09-24 | Domain set to sayemtaher.org; git repo initialised and pushed to GitHub `main`. |
 | 2026-09-24 | Added KvK registry data (KvK, legal form, SBI, Eindhoven address, founding date) to config, About, footer, legal pages, JSON-LD; Eindhoven local-SEO copy. |

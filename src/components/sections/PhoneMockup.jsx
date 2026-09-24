@@ -14,7 +14,7 @@ export default function PhoneMockup({ className = '', style }) {
           </div>
 
           <div className="px-5 pt-8 pb-6">
-            <p className="text-[11px] font-medium opacity-60">Goedemorgen 👋</p>
+            <p className="text-[11px] font-medium opacity-75">Goedemorgen 👋</p>
             <p className="text-[22px] font-bold tracking-tight">Ready for A1?</p>
 
             <div className="mt-4 grid grid-cols-3 gap-2">
@@ -26,7 +26,7 @@ export default function PhoneMockup({ className = '', style }) {
                 <div key={l} className="rounded-2xl bg-white p-2.5 shadow-sm dark:bg-white/5">
                   <p className="text-[13px]">{e}</p>
                   <p className="text-[15px] font-bold">{v}</p>
-                  <p className="text-[9px] opacity-60">{l}</p>
+                  <p className="text-[9px] opacity-75">{l}</p>
                 </div>
               ))}
             </div>
@@ -49,17 +49,17 @@ export default function PhoneMockup({ className = '', style }) {
               </div>
             </div>
 
-            <p className="mt-5 mb-2 text-[11px] font-semibold uppercase tracking-wide opacity-50">Next lesson</p>
+            <p className="mt-5 mb-2 text-[11px] font-semibold uppercase tracking-wide opacity-70">Next lesson</p>
             {[
               ['A1 · Unit 3', 'Bij de huisarts', 'Symptoms & appointments'],
               ['A1 · Unit 3', 'Bij de apotheek', 'Medicine requests'],
             ].map(([u, t, s], i) => (
-              <div key={t} className={`mb-2 flex items-center gap-3 rounded-2xl p-3 ${i === 0 ? 'bg-white shadow-sm dark:bg-white/10' : 'opacity-60'}`}>
+              <div key={t} className={`mb-2 flex items-center gap-3 rounded-2xl p-3 ${i === 0 ? 'bg-white shadow-sm dark:bg-white/10' : 'opacity-75'}`}>
                 <span className="grid size-9 place-items-center rounded-xl bg-[#ff6b35]/15 text-[15px]">{i === 0 ? '🩺' : '💊'}</span>
                 <div className="min-w-0">
-                  <p className="text-[9px] font-semibold uppercase opacity-50">{u}</p>
+                  <p className="text-[9px] font-semibold uppercase opacity-70">{u}</p>
                   <p className="truncate text-[13px] font-bold">{t}</p>
-                  <p className="truncate text-[10px] opacity-60">{s}</p>
+                  <p className="truncate text-[10px] opacity-75">{s}</p>
                 </div>
               </div>
             ))}
