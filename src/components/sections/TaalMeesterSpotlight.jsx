@@ -73,8 +73,8 @@ export default function TaalMeesterSpotlight({ headingAs = 'h2' }) {
             <Glass className="flex items-center gap-2.5 rounded-2xl p-3 pr-4">
               <span className="text-xl">🏆</span>
               <span>
-                <span className="block text-[12px] font-semibold">Achievement unlocked</span>
-                <span className="block text-[11px] text-fg-subtle">A0 complete</span>
+                <span className="block text-[12px] font-semibold">40+ achievements</span>
+                <span className="block text-[11px] text-fg-subtle">Tied to real milestones</span>
               </span>
             </Glass>
           </motion.div>

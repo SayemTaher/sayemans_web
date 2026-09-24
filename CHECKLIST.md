@@ -159,6 +159,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-24 | TaalMeester phone now shows the real app screenshot (assets-src/taalmeester_home.png → 33/54 KB WebP via `npm run images`). |
 | 2026-09-24 | Light-mode link blue #0066cc (contrast), stronger mockup text; pushed to trigger Cloudflare redeploy. |
 | 2026-09-24 | Switched hosting config to Cloudflare Workers static assets (fixes `wrangler deploy` error). Added OG image, app icons, CI, CSS-first hero entrance (Speed Index 5.9s → 2.8s), contrast fixes. |
 | 2026-09-24 | Domain set to sayemtaher.org; git repo initialised and pushed to GitHub `main`. |

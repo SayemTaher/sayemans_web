@@ -60,3 +60,12 @@ const squareIcon = favicon.replace(/rx="15"/g, 'rx="0"'); // iOS applies its own
 render(squareIcon, 180, 'apple-touch-icon.png');
 render(favicon, 192, 'icon-192.png');
 render(favicon, 512, 'icon-512.png');
+
+// ── Product screenshots (source in assets-src/) → responsive WebP ──
+const sharp = (await import('sharp')).default;
+fs.mkdirSync(pub('images'), { recursive: true });
+for (const w of [600, 900]) {
+  const out = `images/taalmeester-home-${w}.webp`;
+  await sharp(path.join(root, 'assets-src', 'taalmeester_home.png')).resize({ width: w }).webp({ quality: 82 }).toFile(pub(out));
+  console.log(`✓ public/${out} (${(fs.statSync(pub(out)).size / 1024).toFixed(0)} KB)`);
+}
