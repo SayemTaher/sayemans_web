@@ -2,6 +2,7 @@ import Hero from '@/components/sections/Hero';
 import ScrollStatement from '@/components/sections/ScrollStatement';
 import ServicesBento from '@/components/sections/ServicesBento';
 import TaalMeesterSpotlight from '@/components/sections/TaalMeesterSpotlight';
+import PartnerSpotlight from '@/components/sections/PartnerSpotlight';
 import ProcessSticky from '@/components/sections/ProcessSticky';
 import PricingCards from '@/components/sections/PricingCards';
 import FeatureGrid from '@/components/sections/FeatureGrid';
@@ -30,6 +31,8 @@ export default function Home() {
       <ServicesBento />
 
       <TaalMeesterSpotlight />
+
+      <PartnerSpotlight />
 
       <ProcessSticky />
 

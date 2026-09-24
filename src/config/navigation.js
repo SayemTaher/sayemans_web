@@ -17,6 +17,7 @@ export const footerNav = [
       { label: 'About', to: '/about' },
       { label: 'Process', to: '/process' },
       { label: 'Solutions', to: '/solutions' },
+      { label: 'Partners', to: '/partners' },
       { label: 'Insights', to: '/insights' },
       { label: 'Contact', to: '/contact' },
     ],

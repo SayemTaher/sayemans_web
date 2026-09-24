@@ -64,6 +64,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 - [x] Solutions (B2B, SaaS, startups, EdTech, web, design systems)
 - [x] Products + **TaalMeester case study** (curriculum, features, business model, App Store/website/Instagram links)
 - [x] Pricing: fixed projects, subscriptions, hourly, billing FAQ
+- [x] Partners page + homepage section (Mentic, affiliated business partner)
 - [x] Process · About (company facts incl. KvK/BTW when filled) · Insights (3 articles) + article pages
 - [x] Contact: multi-step-feel inquiry form (services, budget, timeline), validation, honeypot, success state, `?service=` / `?plan=` prefill
 - [x] Legal: Privacy (GDPR/AVG), Terms, Cookies (with "open cookie settings")
@@ -161,6 +162,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-09-25 | Added affiliated partner Mentic (mentic.io): homepage section + /partners page, facts verified from their site, independence disclaimer. |
 | 2026-09-25 | Live domain is **sayemans.org** (sayemtaher.org does not exist, NXDOMAIN): all URLs, sitemap, OG, CORS origins switched. Found live site stuck on commit b80ce56 → Worker deploys (1a364c6, faab0db) not live yet. Firestore DB + Auth now exist; security rules still Firebase defaults (deny all). |
 | 2026-09-25 | Firebase project `sayemans` wired into production builds. Leads/subscribers now saved via email OR Firestore (either succeeding counts), with an 8s Firestore timeout. Firestore + Auth still need enabling in the console. |
 | 2026-09-25 | Contact form now emails inquiries via Cloudflare Worker + Resend (to sayemans.org@gmail.com); business email changed to sayemans.org@gmail.com; logo simplified to plain text name; URLs served without trailing slash. |

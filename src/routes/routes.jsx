@@ -22,6 +22,7 @@ const Solutions = lazyPage(() => import('@/pages/Solutions'));
 const Products = lazyPage(() => import('@/pages/Products'));
 const TaalMeester = lazyPage(() => import('@/pages/TaalMeester'));
 const Pricing = lazyPage(() => import('@/pages/Pricing'));
+const Partners = lazyPage(() => import('@/pages/Partners'));
 const Process = lazyPage(() => import('@/pages/Process'));
 const About = lazyPage(() => import('@/pages/About'));
 const Insights = lazyPage(() => import('@/pages/Insights'));
@@ -109,6 +110,17 @@ export const routes = [
       description: taalmeester.summary,
       type: 'article',
       jsonLd: [taalmeesterLd(), breadcrumbLd([{ name: 'Products', path: '/products' }, { name: 'TaalMeester', path: '/products/taalmeester' }])],
+    }),
+  },
+  {
+    path: '/partners',
+    Component: Partners,
+    sitemap: { priority: 0.6, changefreq: 'monthly' },
+    seo: () => ({
+      title: 'Partners',
+      description:
+        'SAYEMANS partners with Mentic, an AI advertising department that researches your market and runs your Meta campaigns. We build the product, Mentic brings the customers.',
+      jsonLd: [breadcrumbLd([{ name: 'Partners', path: '/partners' }])],
     }),
   },
   {
