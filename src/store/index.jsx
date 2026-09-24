@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useSyncExternalStore, useCallback } from 'react';
+import { createContext, useContext, useEffect, useState, useSyncExternalStore, useCallback } from 'react';
 import { createStore, combineReducers } from './core.js';
 import ui from './slices/ui.js';
 import consent from './slices/consent.js';
@@ -13,6 +13,10 @@ const StoreContext = createContext(null);
 
 export function StoreProvider({ children, store: external }) {
   const [store] = useState(() => external ?? makeStore());
+  // Dev only: lets you poke the store from the console (e.g. simulate slow loading).
+  useEffect(() => {
+    if (import.meta.env.DEV) window.__sayemansStore = store;
+  }, [store]);
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
 }
 

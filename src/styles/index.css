@@ -275,10 +275,9 @@
    Overshoot springs used sparingly on top of the Apple-style base motion.   */
 :root {
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-  /* Delay added to above-the-fold entrances while the opening intro plays */
+  /* Delay added to above-the-fold entrances while the opening intro plays (every full page load) */
   --intro: 1.25s;
 }
-.intro-seen { --intro: 0s; }
 
 /* Opening intro: SAYEMANS letters drop in and land with a squash */
 .intro {
@@ -292,7 +291,6 @@
   background: var(--bg);
   animation: intro-out 0.75s var(--ease-out-expo) 1.3s both;
 }
-.intro-seen .intro { display: none; }
 .intro-word {
   display: flex;
   font-size: clamp(2.6rem, 10vw, 7.5rem);
@@ -366,4 +364,32 @@
 @media (prefers-reduced-motion: reduce) {
   :root { --intro: 0s; }
   .intro { display: none; }
+}
+
+/* Global loader: letters keep bouncing in a wave until loading resolves */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  background: color-mix(in oklab, var(--bg) 72%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  backdrop-filter: blur(18px) saturate(160%);
+}
+.loader-overlay .intro-word { font-size: clamp(2rem, 7vw, 4.5rem); }
+.loader-letter {
+  display: inline-block;
+  transform-origin: 50% 100%;
+  animation: loader-bounce 1.2s var(--ease-apple) calc(var(--i) * 90ms) infinite;
+}
+@keyframes loader-bounce {
+  0%, 60%, 100% { transform: none; }
+  18% { transform: translateY(-38%) scale(0.94, 1.08); animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45); }
+  34% { transform: translateY(0) scale(1.12, 0.84); animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); }
+  46% { transform: translateY(-8%) scale(0.98, 1.02); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .loader-letter { animation: loader-pulse 1.4s ease-in-out calc(var(--i) * 90ms) infinite; }
+  @keyframes loader-pulse { 50% { opacity: 0.35; } }
 }

@@ -10,6 +10,7 @@ import Glass from '@/components/ui/Glass';
 import Icon from '@/components/ui/Icon';
 import Logo from '@/components/layout/Logo';
 import ThemeToggle from '@/components/layout/ThemeToggle';
+import { trackLoading, useLoading } from '@/hooks/useLoading';
 
 const STATUSES = ['new', 'contacted', 'qualified', 'proposal', 'won', 'lost'];
 const statusTone = {
@@ -165,11 +166,10 @@ function Dashboard({ user }) {
   const load = async () => {
     setData((d) => ({ ...d, loading: true, error: null }));
     try {
-      const [leads, events, subscribers] = await Promise.all([
-        fetchCollection('leads'),
-        fetchCollection('events', 2000),
-        fetchCollection('subscribers'),
-      ]);
+      const [leads, events, subscribers] = await trackLoading(
+        dispatch,
+        Promise.all([fetchCollection('leads'), fetchCollection('events', 2000), fetchCollection('subscribers')]),
+      );
       setData({ leads, events, subscribers, loading: false, error: null });
     } catch (err) {
       setData((d) => ({ ...d, loading: false, error: err.message }));
@@ -177,7 +177,8 @@ function Dashboard({ user }) {
   };
   useEffect(() => {
     load();
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // load once on mount
 
   const views = data.events.filter((e) => e.type === 'page_view');
   const visitors = new Set(views.map((e) => e.visitorId)).size;
@@ -325,6 +326,7 @@ function Dashboard({ user }) {
 export default function Admin() {
   const dispatch = useAppDispatch();
   const auth = useAppSelector(selectAuth);
+  useLoading(auth.status !== 'ready');
 
   useEffect(() => {
     dispatch(authActions.pending());
@@ -337,7 +339,7 @@ export default function Admin() {
   }, [dispatch]);
 
   if (auth.status !== 'ready') {
-    return <div className="grid min-h-screen place-items-center"><Icon name="Loader2" className="animate-spin text-fg-subtle" /></div>;
+    return <div className="min-h-screen" aria-busy="true" />;
   }
   if (!auth.user) return <Login />;
   if (!auth.isAdmin) {

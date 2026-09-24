@@ -9,6 +9,7 @@ Website for SAYEMANS (digital product studio, NL). React 19 + Vite 8 + Tailwind 
 - Content lives in `src/data/*` and `src/config/company.js`; components should not hardcode copy that belongs there.
 - State: `src/store` is a Redux-compatible Context store. Keep slices pure (return new state) so an RTK migration stays drop-in.
 - Email: `worker/index.js` (`/api/contact`, `/api/subscribe`) sends via Resend; `RESEND_API_KEY` is a Cloudflare secret, never committed.
+- Loading: wrap slow work with `useLoading(active)` or `trackLoading(dispatch, promise)` (src/hooks/useLoading.js) so the global bouncing-letters loader (GlobalLoader) can show it; timings in src/config/loader.js.
 - Firebase is lazy-loaded and optional; every service must keep working with `localAdapter` when env vars are missing.
 
 ## Gotchas

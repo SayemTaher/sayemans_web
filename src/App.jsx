@@ -7,10 +7,15 @@ import Layout from '@/components/layout/Layout';
 import Head from '@/components/layout/Head';
 import SiteEffects from '@/components/layout/SiteEffects';
 import LiquidGlassFilter from '@/components/ui/LiquidGlassFilter';
+import GlobalLoader from '@/components/layout/GlobalLoader';
+import RouteErrorBoundary from '@/components/layout/RouteErrorBoundary';
+import { useLoading } from '@/hooks/useLoading';
 
 const routerRoutes = routes.map(({ path, Component }) => ({ path, element: <Component /> }));
 
+/** Shown while a page's code downloads; registers with the global loader. */
 function PageFallback() {
+  useLoading(true);
   return <div className="min-h-screen" aria-busy="true" />;
 }
 
@@ -25,14 +30,20 @@ function Page({ location }) {
       exit={{ opacity: 0, y: -8 }}
       transition={{ type: 'spring', stiffness: 160, damping: 26 }}
     >
-      <Suspense fallback={<PageFallback />}>{element}</Suspense>
+      <RouteErrorBoundary key={location.pathname}>
+        <Suspense fallback={<PageFallback />}>{element}</Suspense>
+      </RouteErrorBoundary>
     </motion.div>
   );
 }
 
 function BarePage({ location }) {
   const element = useRoutes(routerRoutes, location);
-  return <Suspense fallback={<PageFallback />}>{element}</Suspense>;
+  return (
+    <RouteErrorBoundary key={location.pathname}>
+      <Suspense fallback={<PageFallback />}>{element}</Suspense>
+    </RouteErrorBoundary>
+  );
 }
 
 function AppShell() {
@@ -51,6 +62,7 @@ function AppShell() {
       <Head seo={seo} pathname={location.pathname} />
       <SiteEffects />
       <LiquidGlassFilter />
+      <GlobalLoader />
       {route?.bare ? (
         <BarePage location={location} />
       ) : (
