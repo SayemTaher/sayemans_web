@@ -11,7 +11,7 @@ const RELOAD_KEY = 'sayemans:loader-reloaded';
 /**
  * Global loading overlay. Anything can register work with useLoading() or
  * trackLoading(). When work takes longer than showAfterMs, the SAYEMANS
- * letters bounce until everything resolves. After timeoutMs the visitor is
+ * letter tiles morph until everything resolves. After timeoutMs the visitor is
  * sent home (or, if already home, the page reloads once).
  */
 export default function GlobalLoader() {
@@ -98,7 +98,7 @@ export default function GlobalLoader() {
           className="loader-overlay"
         >
           <BrandLetters letterClass="loader-letter" />
-          <span className="sr-only">Loading…</span>
+          <span className="loader-caption">Loading</span>
         </motion.div>
       )}
     </AnimatePresence>

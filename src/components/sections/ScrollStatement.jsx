@@ -18,7 +18,7 @@ export default function ScrollStatement({ text, eyebrow }) {
   return (
     <section ref={ref} className="container-x py-28 sm:py-40">
       {eyebrow && <p className="eyebrow mb-8">{eyebrow}</p>}
-      <p className="max-w-5xl text-[clamp(1.75rem,4.2vw,3.5rem)] leading-[1.12] font-semibold tracking-[-0.03em]">
+      <p className="max-w-5xl text-[clamp(1.75rem,4.2vw,3.5rem)] font-display leading-[1.08] font-bold tracking-[-0.04em]">
         {words.map((w, i) => (
           <Word key={i} progress={scrollYProgress} range={[i / words.length, (i + 1) / words.length]}>
             {w}

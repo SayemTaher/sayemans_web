@@ -6,6 +6,7 @@ import { subscribe } from '@/services/leads';
 import { useAppDispatch } from '@/store';
 import { reopenConsent, } from '@/store/slices/consent';
 import { showToast } from '@/store/slices/ui';
+import { BRAND_NAME } from '@/brand/mark';
 import Logo from './Logo';
 import Icon from '../ui/Icon';
 import Glass from '../ui/Glass';
@@ -102,6 +103,17 @@ export default function Footer() {
           </p>
           <button onClick={() => dispatch(reopenConsent())} className="text-left hover:text-fg">Cookie settings</button>
         </div>
+      </div>
+
+      {/* Oversized sign-off wordmark; letters wave on hover */}
+      <div aria-hidden="true" className="group mt-6 overflow-hidden select-none">
+        <p className="flex translate-y-[14%] justify-center font-display text-[clamp(4rem,18.5vw,19rem)] leading-[0.8] font-extrabold tracking-[-0.06em]">
+          {BRAND_NAME.split('').map((c, i) => (
+            <span key={i} className="wm-letter" style={{ '--i': i }}>
+              {c}
+            </span>
+          ))}
+        </p>
       </div>
     </footer>
   );

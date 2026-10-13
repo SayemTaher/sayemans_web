@@ -8,7 +8,9 @@
 
 ## 📍 Where we left off
 
-**Last session: 24 Sep 2026, Phase 1 (Foundation) complete.**
+**Last session: 13 Oct 2026, design overhaul ("Ink & Paper").** New identity: paper/ink palette with ultramarine + lime, Bricolage Grotesque (display, variable) + Instrument Serif italic accents, neumorphic clay surfaces, floating 3D shapes, new tile intro + morphing loader, all TaalMeester imagery replaced with the current app screens (source: TaalMeester.Web/screens, copied to assets-src/taalmeester → `npm run images`).
+
+**Earlier: 24 Sep 2026, Phase 1 (Foundation) complete.**
 The full site runs locally in dev (`npm run dev`) and as a prerendered production build (`npm run build && npm run preview`).
 Firebase is **not connected yet**: forms and analytics currently use the local fallback adapter (browser storage).
 
@@ -162,6 +164,7 @@ Code is on GitHub: https://github.com/SayemTaher/sayemans_web (branch `main`).
 
 | Date | Summary |
 |------|---------|
+| 2026-10-13 | Design overhaul. Tokens re-skinned (paper #f2eee6 / ink #16140f, ultramarine #2b39ff, lime #c8f04a, pastel card fills); `.glass` is now a neumorphic clay surface; dotted paper background. Fonts: Bricolage Grotesque Variable (opsz) for headings, Instrument Serif italic for `*accent*` words (RevealText markup). New: FloatingShapes (3D star/ring/pill/bolt/half-disc/ball, scroll + pointer parallax), tile intro (pastel shape tiles pop in, variable-font weight swell, lime squiggle, ultramarine curtain), loader (tiles morph shape while letters breathe through the weight axis), editorial hero with spinning booking badge + TaalMeester phone, pastel numbered services bento, ink capabilities ribbon, ultramarine CTA, oversized footer wordmark. TaalMeester: 19 current app screens (400/800w WebP, dark variants for home/path), phone fan spotlight, AppShowcase bento + ScreenRail on the case study, rail on /products. OG image restyled. |
 | 2026-09-25 | Intro now plays on every full page load. Same bouncing SAYEMANS letters power a global loader: anything registers via useLoading()/trackLoading(); overlay after 350ms, bounces until resolved, after 12s sends visitor home (or reloads once on home). Failed page-code downloads recover via RouteErrorBoundary. Settings in src/config/loader.js. |
 | 2026-09-25 | Motion & "show, don't tell" pass (inspired by Mentic's playful springs): CSS opening intro (bouncing SAYEMANS letters, once per session), logo letter-wave on hover, before/after checkout slider, chat-thread "week with SAYEMANS", scroll-velocity kinetic word band, spring-pop service icons. Industries/Principles moved off the homepage. |
 | 2026-09-25 | Added affiliated partner Mentic (mentic.io): homepage section + /partners page, facts verified from their site, independence disclaimer. |

@@ -13,7 +13,7 @@ const withCta = (plans) => plans.map((p) => ({ ...p, cta: p.cta ?? `Start ${p.na
 export default function Pricing() {
   return (
     <>
-      <PageHero eyebrow="Pricing" title="Simple, honest pricing." intro="Fixed-price projects, flexible subscriptions and transparent rates. All prices in EUR, excluding 21% BTW." />
+      <PageHero eyebrow="Pricing" title="Simple, *honest* pricing." intro="Fixed-price projects, flexible subscriptions and transparent rates. All prices in EUR, excluding 21% BTW." />
 
       <section className="container-x py-12">
         <SectionHeader eyebrow="Projects" title="Fixed scope. Fixed price." intro="Best when you know what you need. Clear milestones, no hourly surprises." />
@@ -21,7 +21,7 @@ export default function Pricing() {
       </section>
 
       <section className="container-x py-24">
-        <SectionHeader eyebrow="Subscriptions" title="A product team, on tap." intro="Best for continuous product work. Monthly billing, predictable output." />
+        <SectionHeader eyebrow="Subscriptions" title="A product team, on *tap*." intro="Best for continuous product work. Monthly billing, predictable output." />
         <div className="mt-14"><PricingCards plans={withCta(subscriptionPlans)} /></div>
       </section>
 
@@ -41,7 +41,7 @@ export default function Pricing() {
       </section>
 
       <section className="container-x grid gap-12 py-24 lg:grid-cols-[1fr_1.6fr]">
-        <SectionHeader align="left" eyebrow="Billing FAQ" title="The fine print, made clear." />
+        <SectionHeader align="left" eyebrow="Billing FAQ" title="The fine print, made *clear*." />
         <Accordion items={pricingFaqs} />
       </section>
 

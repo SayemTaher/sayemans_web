@@ -22,7 +22,7 @@ export default function PartnerSpotlight({ detailed = false, headingAs = 'h2' })
             </Glass>
           </Reveal>
 
-          <RevealText as={headingAs} text="Your product, and the people who need it." className="mt-7 text-headline font-semibold text-chrome" />
+          <RevealText as={headingAs} text="Your product, and the *people* who need it." className="mt-7 text-headline font-semibold text-chrome" />
 
           <Reveal as="p" delay={0.1} className="mt-6 max-w-xl text-lg leading-relaxed text-fg-muted">
             {p.whyTogether}

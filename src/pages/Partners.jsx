@@ -7,7 +7,7 @@ export default function Partners() {
     <>
       <PageHero
         eyebrow="Partners"
-        title="Better together."
+        title="Better *together*."
         intro="We work with a small number of partners whose work continues where ours stops, so clients get the full picture without managing extra agencies."
       />
       <div className="-mt-16">

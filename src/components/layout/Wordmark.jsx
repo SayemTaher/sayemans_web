@@ -10,7 +10,7 @@ export default function Wordmark({ size = 15, className = '' }) {
     <span
       aria-label={BRAND_NAME}
       role="img"
-      className={`inline-flex font-semibold leading-none whitespace-nowrap ${className}`}
+      className={`inline-flex font-display font-extrabold leading-none whitespace-nowrap ${className}`}
       style={{ fontSize: size, letterSpacing: `${TRACKING_EM}em` }}
     >
       {BRAND_NAME.split('').map((c, i) => (

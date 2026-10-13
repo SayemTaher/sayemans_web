@@ -157,7 +157,7 @@ export default function WorkingThread() {
     <section ref={ref} className="container-x grid items-start gap-12 py-24 sm:py-32 lg:grid-cols-[1fr_1.25fr] lg:gap-16">
       <div className="lg:sticky lg:top-32">
         <Reveal as="p" className="eyebrow">Working together</Reveal>
-        <RevealText text="Less talk. More shipping." className="mt-5 text-headline font-semibold text-chrome" />
+        <RevealText text="Less talk. More *shipping*." className="mt-5 text-headline font-semibold text-chrome" />
         <Reveal as="p" delay={0.1} className="mt-6 max-w-md text-lg leading-relaxed text-fg-muted">
           One shared channel, the people doing the work, and a staging link you can open any time. This is a normal week.
         </Reveal>

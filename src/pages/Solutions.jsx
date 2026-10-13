@@ -69,7 +69,7 @@ const solutions = [
 export default function Solutions() {
   return (
     <>
-      <PageHero eyebrow="Solutions" title="Solutions shaped around your stage." intro="Whether you are modernising a B2B workflow or launching your first SaaS, we have done it before and know where the pitfalls are." />
+      <PageHero eyebrow="Solutions" title="Solutions shaped around your *stage*." intro="Whether you are modernising a B2B workflow or launching your first SaaS, we have done it before and know where the pitfalls are." />
 
       <section className="container-x py-12">
         <Stagger className="grid gap-5 md:grid-cols-2">
@@ -102,7 +102,7 @@ export default function Solutions() {
       </section>
 
       <section className="container-x py-24">
-        <SectionHeader eyebrow="Industries" title="Where we do our best work." />
+        <SectionHeader eyebrow="Industries" title="Where we do our *best* work." />
         <div className="mt-14"><FeatureGrid items={industries} /></div>
       </section>
 

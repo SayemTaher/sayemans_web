@@ -6,9 +6,11 @@ const MotionLink = motion.create(Link);
 
 const variants = {
   primary:
-    'bg-fg text-bg hover:opacity-90 shadow-[0_8px_30px_-8px_rgb(0_0_0/0.35)]',
+    'bg-fg text-bg font-semibold shadow-[inset_0_-3px_0_rgb(0_0_0/0.35),inset_0_1px_0_rgb(255_255_255/0.18),0_10px_24px_-10px_rgb(0_0_0/0.5)] hover:opacity-90',
   accent:
-    'text-white bg-[linear-gradient(135deg,var(--color-blue),var(--color-indigo))] shadow-[0_10px_30px_-10px_var(--color-blue)] hover:brightness-110',
+    'text-white font-semibold bg-[#2b39ff] shadow-[inset_0_-3px_0_rgb(0_0_0/0.28),inset_0_1px_0_rgb(255_255_255/0.3),0_12px_28px_-10px_rgb(43_57_255/0.7)] hover:brightness-110',
+  lime:
+    'text-[#16140f] font-semibold bg-lime shadow-[inset_0_-3px_0_rgb(0_0_0/0.18),inset_0_1px_0_rgb(255_255_255/0.5),0_12px_28px_-12px_rgb(120_160_0/0.7)] hover:brightness-105',
   glass: 'glass glass-rim text-fg',
   ghost: 'text-blue hover:underline underline-offset-4 px-0!',
 };

@@ -12,7 +12,7 @@ export const fmtDate = (d) => new Date(d).toLocaleDateString('en-GB', { day: 'nu
 export default function Insights() {
   return (
     <>
-      <PageHero eyebrow="Insights" title="Notes from the studio." intro="Practical thinking on product strategy, design and engineering." />
+      <PageHero eyebrow="Insights" title="Notes from the *studio*." intro="Practical thinking on product strategy, design and engineering." />
       <section className="container-x py-12">
         <Stagger className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {insights.map((a) => (

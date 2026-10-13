@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import PageHero from '@/components/sections/PageHero';
 import TaalMeesterSpotlight from '@/components/sections/TaalMeesterSpotlight';
+import ScreenRail from '@/components/sections/ScreenRail';
 import CTASection from '@/components/sections/CTASection';
 import Glass from '@/components/ui/Glass';
 import Icon from '@/components/ui/Icon';
@@ -11,10 +12,13 @@ export default function Products() {
     <>
       <PageHero
         eyebrow="Products"
-        title="We build our own products, too."
+        title="We build our own products, *too*."
         intro="Running our own products keeps our skills sharp. Every lesson learned in pricing, retention and scaling feeds straight into client work."
       />
       <TaalMeesterSpotlight />
+      <section className="py-12">
+        <ScreenRail />
+      </section>
       <section className="container-x py-16">
         <Reveal>
           <Glass className="flex flex-col items-start justify-between gap-6 rounded-[32px] p-8 sm:flex-row sm:items-center sm:p-10">

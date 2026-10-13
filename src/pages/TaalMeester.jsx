@@ -1,6 +1,8 @@
 import { taalmeester as tm } from '@/data/products';
 import TaalMeesterSpotlight from '@/components/sections/TaalMeesterSpotlight';
 import FeatureGrid from '@/components/sections/FeatureGrid';
+import AppShowcase from '@/components/sections/AppShowcase';
+import ScreenRail from '@/components/sections/ScreenRail';
 import CTASection from '@/components/sections/CTASection';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Glass from '@/components/ui/Glass';
@@ -23,7 +25,16 @@ export default function TaalMeester() {
       </section>
 
       <section className="container-x py-12">
-        <SectionHeader eyebrow="Curriculum" title="A0 to A2, step by step." />
+        <SectionHeader eyebrow="Inside the app" title="Every screen, made for *Dutch*." intro="Real screens from the current TaalMeester build. Designed, written and engineered in-house." />
+        <div className="mt-14"><AppShowcase /></div>
+      </section>
+
+      <section className="py-16">
+        <ScreenRail />
+      </section>
+
+      <section className="container-x py-12">
+        <SectionHeader eyebrow="Curriculum" title="A0 to A2, step by *step*." />
         <Stagger className="mt-14 grid gap-5 md:grid-cols-3">
           {tm.levels.map((l, i) => (
             <motion.div key={l.level} variants={staggerItem}>
@@ -48,7 +59,7 @@ export default function TaalMeester() {
       </section>
 
       <section className="container-x py-24">
-        <SectionHeader eyebrow="Features" title="Designed for daily progress." />
+        <SectionHeader eyebrow="Features" title="Designed for *daily* progress." />
         <div className="mt-14"><FeatureGrid items={tm.features} accent="text-taal" /></div>
       </section>
 

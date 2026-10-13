@@ -27,29 +27,25 @@ const font = `'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif`;
 const og = `
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
-    <radialGradient id="a1" cx="0.18" cy="0.1" r="0.6"><stop offset="0" stop-color="#0a84ff" stop-opacity=".55"/><stop offset="1" stop-color="#0a84ff" stop-opacity="0"/></radialGradient>
-    <radialGradient id="a2" cx="0.95" cy="0.35" r="0.55"><stop offset="0" stop-color="#bf5af2" stop-opacity=".45"/><stop offset="1" stop-color="#bf5af2" stop-opacity="0"/></radialGradient>
-    <radialGradient id="a3" cx="0.55" cy="1.1" r="0.6"><stop offset="0" stop-color="#ff375f" stop-opacity=".35"/><stop offset="1" stop-color="#ff375f" stop-opacity="0"/></radialGradient>
-    <linearGradient id="grad" x1="0" x2="1"><stop offset="0" stop-color="#0a84ff"/><stop offset=".4" stop-color="#5e5ce6"/><stop offset=".7" stop-color="#bf5af2"/><stop offset="1" stop-color="#ff375f"/></linearGradient>
-    <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset=".3" stop-color="#f5f5f7"/><stop offset="1" stop-color="#8e8e93"/></linearGradient>
-    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#fff" stop-opacity=".03"/></linearGradient>
-    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".4" stop-color="#fff" stop-opacity=".06"/><stop offset="1" stop-color="#fff" stop-opacity=".25"/></linearGradient>
-    <linearGradient id="logo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a84ff"/><stop offset=".55" stop-color="#5e5ce6"/><stop offset="1" stop-color="#ff375f"/></linearGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#16140f" fill-opacity=".09"/></pattern>
+    <radialGradient id="ring" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#e3d6ff"/><stop offset="1" stop-color="#9b7bff"/></radialGradient>
+    <linearGradient id="star" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffb07a"/><stop offset="1" stop-color="#ff5a1f"/></linearGradient>
+    <linearGradient id="pill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6ff8a"/><stop offset="1" stop-color="#a8d81c"/></linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="#000"/>
-  <rect width="1200" height="630" fill="url(#a1)"/>
-  <rect width="1200" height="630" fill="url(#a2)"/>
-  <rect width="1200" height="630" fill="url(#a3)"/>
+  <rect width="1200" height="630" fill="#f2eee6"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
 
-  <rect x="60" y="60" width="1080" height="510" rx="44" fill="url(#glass)" stroke="url(#rim)" stroke-width="1.5"/>
+  <circle cx="1030" cy="150" r="78" fill="none" stroke="url(#ring)" stroke-width="44"/>
+  <path d="M1040 400 C1048 448 1062 462 1110 470 C1062 478 1048 492 1040 540 C1032 492 1018 478 970 470 C1018 462 1032 448 1040 400Z" fill="url(#star)"/>
+  <rect x="860" y="250" width="150" height="62" rx="31" transform="rotate(-18 935 281)" fill="url(#pill)"/>
 
-  <text x="110" y="146" font-family="${font}" font-size="28" font-weight="600" letter-spacing="5.6" fill="#f5f5f7">SAYEMANS</text>
+  <text x="90" y="128" font-family="${font}" font-size="26" font-weight="700" letter-spacing="5" fill="#16140f">SAYEMANS</text>
 
-  <text x="108" y="318" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#chrome)">Digital products,</text>
-  <text x="108" y="410" font-family="${font}" font-size="82" font-weight="700" letter-spacing="-3" fill="url(#grad)">built with passion.</text>
+  <text x="86" y="318" font-family="${font}" font-size="96" font-weight="800" letter-spacing="-4" fill="#16140f">Digital products,</text>
+  <text x="86" y="420" font-family="Georgia, 'Times New Roman', serif" font-style="italic" font-size="96" letter-spacing="-2" fill="#2b39ff">built with passion.</text>
 
-  <text x="110" y="500" font-family="${font}" font-size="26" fill="#a1a1a6">UI/UX · Web · Mobile apps · SaaS · Design systems</text>
-  <text x="1090" y="500" text-anchor="end" font-family="${font}" font-size="24" font-weight="500" fill="#f5f5f7">Eindhoven, NL · sayemans.org</text>
+  <text x="90" y="530" font-family="${font}" font-size="26" fill="#4a463e">UI/UX · Web · Mobile apps · SaaS · Design systems</text>
+  <text x="90" y="568" font-family="${font}" font-size="22" font-weight="600" fill="#16140f">Eindhoven, NL · sayemans.org</text>
 </svg>`;
 
 render(og, 1200, 'og-image.png');
@@ -73,11 +69,16 @@ render(iconSvg({ shape: 'square', glyphScale: 0.78 }), 512, 'icon-maskable-512.p
 render(wordmarkSvg({ color: '#1d1d1f' }), 1200, 'logo.png');
 render(wordmarkSvg({ color: '#f5f5f7' }), 1200, 'logo-white.png');
 
-// ── Product screenshots (source in assets-src/) → responsive WebP ──
+// ── Product screenshots (sources in assets-src/taalmeester/*.webp) → responsive WebP ──
+// Sources are the current TaalMeester iOS screens (1206px wide).
 const sharp = (await import('sharp')).default;
-fs.mkdirSync(pub('images'), { recursive: true });
-for (const w of [600, 900]) {
-  const out = `images/taalmeester-home-${w}.webp`;
-  await sharp(path.join(root, 'assets-src', 'taalmeester_home.png')).resize({ width: w }).webp({ quality: 82 }).toFile(pub(out));
-  console.log(`✓ public/${out} (${(fs.statSync(pub(out)).size / 1024).toFixed(0)} KB)`);
+const shots = path.join(root, 'assets-src', 'taalmeester');
+fs.mkdirSync(pub('images/taalmeester'), { recursive: true });
+for (const file of fs.readdirSync(shots).filter((f) => f.endsWith('.webp'))) {
+  const name = file.replace(/\.webp$/, '');
+  for (const w of [400, 800]) {
+    const out = `images/taalmeester/${name}-${w}.webp`;
+    await sharp(path.join(shots, file)).resize({ width: w }).webp({ quality: 80 }).toFile(pub(out));
+  }
+  console.log(`✓ public/images/taalmeester/${name}-{400,800}.webp`);
 }

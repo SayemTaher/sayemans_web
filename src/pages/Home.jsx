@@ -47,7 +47,7 @@ export default function Home() {
       <section className="container-x py-24 sm:py-32">
         <SectionHeader
           eyebrow="Engagement models"
-          title="Transparent pricing. No surprises."
+          title="Transparent pricing. No *surprises*."
           intro="Fixed-scope projects, monthly product subscriptions or hourly consulting. Pick the model that fits your stage."
         />
         <div className="mt-16">
@@ -61,7 +61,7 @@ export default function Home() {
       <StatsBand />
 
       <section className="container-x grid gap-12 py-24 sm:py-32 lg:grid-cols-[1fr_1.6fr]">
-        <SectionHeader align="left" eyebrow="FAQ" title="Questions, answered." />
+        <SectionHeader align="left" eyebrow="FAQ" title="Questions, *answered*." />
         <Accordion items={generalFaqs} />
       </section>
 

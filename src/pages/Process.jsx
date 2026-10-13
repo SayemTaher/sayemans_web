@@ -16,10 +16,10 @@ const rituals = [
 export default function Process() {
   return (
     <>
-      <PageHero eyebrow="Process" title="Clarity at every step." intro="A proven six-phase process that protects your budget and keeps you informed from the first meeting to launch and beyond." />
+      <PageHero eyebrow="Process" title="Clarity at every *step*." intro="A proven six-phase process that protects your budget and keeps you informed from the first meeting to launch and beyond." />
       <ProcessSticky cta={false} />
       <section className="container-x py-24">
-        <SectionHeader eyebrow="Ways of working" title="How collaboration feels." />
+        <SectionHeader eyebrow="Ways of working" title="How collaboration *feels*." />
         <div className="mt-14"><FeatureGrid items={rituals} /></div>
       </section>
       <CTASection />

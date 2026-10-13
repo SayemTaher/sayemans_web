@@ -26,7 +26,7 @@ export default function About() {
     <>
       <PageHero
         eyebrow="About"
-        title="A small studio with a lot of passion for good software."
+        title="A small studio with a lot of *passion* for good software."
         intro="SAYEMANS was founded in Eindhoven in 2022 with a simple belief: software should feel as considered as the best physical products."
       />
 
@@ -35,7 +35,7 @@ export default function About() {
       <StatsBand />
 
       <section className="container-x py-24">
-        <SectionHeader eyebrow="Principles" title="What we stand for." />
+        <SectionHeader eyebrow="Principles" title="What we *stand* for." />
         <div className="mt-14"><FeatureGrid items={principles} cols="lg:grid-cols-4" /></div>
       </section>
 

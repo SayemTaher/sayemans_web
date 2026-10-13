@@ -98,7 +98,7 @@ export default function BeforeAfter() {
     <section className="container-x py-24 sm:py-32">
       <div className="mx-auto mb-12 flex max-w-3xl flex-col items-center gap-5 text-center">
         <Reveal as="p" className="eyebrow">UI/UX, in practice</Reveal>
-        <RevealText text="Same checkout. Very different result." className="text-headline font-semibold text-chrome" />
+        <RevealText text="Same checkout. Very *different* result." className="text-headline font-semibold text-chrome" />
         <Reveal as="p" delay={0.1} className="text-lg text-fg-muted">
           Twelve fields and five steps, or one tap. Drag the handle to see what a redesign changes.
         </Reveal>

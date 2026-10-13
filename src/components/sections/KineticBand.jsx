@@ -44,13 +44,15 @@ function Row({ baseVelocity = -2, outline = false }) {
             {items.map((w, i) => (
               <span key={`${k}-${i}`} className="flex items-center">
                 <span
-                  className={`px-6 text-[clamp(3rem,9vw,8rem)] leading-none font-semibold tracking-[-0.04em] ${
-                    outline ? 'text-transparent [-webkit-text-stroke:1.5px_var(--fg-subtle)]' : 'text-chrome'
+                  className={`px-6 font-display text-[clamp(3rem,9vw,8rem)] leading-none tracking-[-0.045em] ${
+                    outline ? 'serif-accent' : 'font-extrabold'
                   }`}
                 >
                   {w}
                 </span>
-                <span className="size-3 shrink-0 rounded-full bg-[linear-gradient(135deg,var(--color-blue),var(--color-pink))]" />
+                <svg viewBox="0 0 100 100" className="size-[clamp(1.5rem,3vw,2.5rem)] shrink-0 text-lime">
+                  <path d="M50 0 C55 38 62 45 100 50 C62 55 55 62 50 100 C45 62 38 55 0 50 C38 45 45 38 50 0Z" fill="currentColor" />
+                </svg>
               </span>
             ))}
           </span>

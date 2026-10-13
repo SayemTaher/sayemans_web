@@ -22,7 +22,23 @@ export function Reveal({ as = 'div', delay = 0, y = 32, blur = 10, className = '
   );
 }
 
-/** Headline that reveals word-by-word. */
+// "*word*" (optionally followed by punctuation) marks an editorial accent word,
+// set in the italic serif. Returns the word content to render.
+const accentRe = /^\*(.+)\*([.,!?:;]*)$/;
+function word(w) {
+  const m = w.match(accentRe);
+  if (!m) return w;
+  return (
+    <>
+      <span className="serif-accent">{m[1]}</span>
+      {m[2]}
+    </>
+  );
+}
+/** Plain text of a RevealText string (accent markers removed), e.g. for aria labels. */
+export const plainText = (text) => text.replace(/\*/g, '');
+
+/** Headline that reveals word-by-word. Wrap a word in *asterisks* for the serif accent. */
 export function RevealText({ text, as = 'h2', className = '', delay = 0, stagger = 0.05, animateOnMount = false }) {
   const Tag = motion[as];
   const words = text.split(' ');
@@ -43,7 +59,7 @@ export function RevealText({ text, as = 'h2', className = '', delay = 0, stagger
             className={`enter inline-block ${gradient ? `${gradient} -mb-[0.14em] pb-[0.14em]` : ''}`}
             style={{ '--d': `${delay + i * stagger}s`, ...(gradient ? { backgroundSize: `${n * 100}% 100%`, backgroundPosition: `${n > 1 ? (i / (n - 1)) * 100 : 0}% 0` } : {}) }}
           >
-            {w}
+            {word(w)}
             {i < n - 1 && '\u00A0'}
           </span>
         ))}
@@ -63,7 +79,7 @@ export function RevealText({ text, as = 'h2', className = '', delay = 0, stagger
             show: { opacity: 1, y: 0, filter: 'blur(0px)', transitionEnd: done, transition: { type: 'spring', stiffness: 110, damping: 20 } },
           }}
         >
-          {w}
+          {word(w)}
           {i < words.length - 1 && ' '}
         </motion.span>
       ))}
